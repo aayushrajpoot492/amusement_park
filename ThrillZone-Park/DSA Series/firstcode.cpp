@@ -1,6 +1,0 @@
-#include<iostream>
-using namespace std;
-int main(){
-    cout << "Atches 23" << "Std"<< endl;
-    return 0;
-}
