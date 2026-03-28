@@ -11,6 +11,19 @@ public class User_Master {
     String m_name,email,password;
     int m_age;
     Long phone_no;
+    String confirmpassword;
+
+    public String getConfirmpassword() {
+        return confirmpassword;
+    }
+
+    public void setConfirmpassword(String confirmpassword) {
+        this.confirmpassword = confirmpassword;
+    }
+
+    public User_Master(String confirmpassword) {
+        this.confirmpassword = confirmpassword;
+    }
 
     public User_Master(Long m_id, String m_name, String email, String password, int m_age, Long phone_no) {
         this.m_id = m_id;
