@@ -10,27 +10,24 @@ public class Booking_Entity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long booking_id;
 
-    String b_name,category,status;
-    LocalDateTime date,time;
-    int  tickets_no;
-    double price_per_ticket;
+    String status;
+    LocalDateTime booking_date_time;
+    int  total_tickets;;
+    double total_amount;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "m_id",nullable = false)
-    private User_Master user;
+     User_Master user;
 
     public Booking_Entity() {
     }
 
-    public Booking_Entity(Long booking_id, String b_name, String category, String status, LocalDateTime date, LocalDateTime time, int tickets_no, double price_per_ticket, User_Master user) {
+    public Booking_Entity(Long booking_id, String status, LocalDateTime booking_date_time, int total_tickets, double total_amount, User_Master user) {
         this.booking_id = booking_id;
-        this.b_name = b_name;
-        this.category = category;
         this.status = status;
-        this.date = date;
-        this.time = time;
-        this.tickets_no = tickets_no;
-        this.price_per_ticket = price_per_ticket;
+        this.booking_date_time = booking_date_time;
+        this.total_tickets = total_tickets;
+        this.total_amount = total_amount;
         this.user = user;
     }
 
@@ -42,30 +39,6 @@ public class Booking_Entity {
         this.booking_id = booking_id;
     }
 
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
-    public String getB_name() {
-        return b_name;
-    }
-
-    public void setB_name(String b_name) {
-        this.b_name = b_name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -74,28 +47,28 @@ public class Booking_Entity {
         this.status = status;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getBooking_date_time() {
+        return booking_date_time;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setBooking_date_time(LocalDateTime booking_date_time) {
+        this.booking_date_time = booking_date_time;
     }
 
-    public int getTickets_no() {
-        return tickets_no;
+    public int getTotal_tickets() {
+        return total_tickets;
     }
 
-    public void setTickets_no(int tickets_no) {
-        this.tickets_no = tickets_no;
+    public void setTotal_tickets(int total_tickets) {
+        this.total_tickets = total_tickets;
     }
 
-    public double getPrice_per_ticket() {
-        return price_per_ticket;
+    public double getTotal_amount() {
+        return total_amount;
     }
 
-    public void setPrice_per_ticket(double price_per_ticket) {
-        this.price_per_ticket = price_per_ticket;
+    public void setTotal_amount(double total_amount) {
+        this.total_amount = total_amount;
     }
 
     public User_Master getUser() {
