@@ -11,7 +11,9 @@ public class FoodCourt_Entity {
     String f_name,category,food_desc;
     double f_price;
     Boolean is_available;
-    byte[] f_image;
+    @Lob
+    @Column(columnDefinition = "bytea")
+     byte[] f_image;
 
     public FoodCourt_Entity() {
     }

@@ -9,20 +9,25 @@ public class Ride_Entity {
     Long ride_id;
 
     String name,description;
-    int capacity;
+    int capacity,min_age;
     double r_price;
     Boolean is_available;
+    @Lob
+    @Column(columnDefinition = "bytea")
+    byte[] r_image;
 
     public Ride_Entity() {
     }
 
-    public Ride_Entity(Long ride_id, String name, String description, int price, Boolean is_available, int capacity) {
+    public Ride_Entity(Long ride_id, String name, String description, int capacity, int min_age, double r_price, Boolean is_available, byte[] r_image) {
         this.ride_id = ride_id;
         this.name = name;
         this.description = description;
+        this.capacity = capacity;
+        this.min_age = min_age;
         this.r_price = r_price;
         this.is_available = is_available;
-        this.capacity = capacity;
+        this.r_image = r_image;
     }
 
     public Long getRide_id() {
@@ -49,14 +54,6 @@ public class Ride_Entity {
         this.description = description;
     }
 
-    public double getPrice() {
-        return r_price;
-    }
-
-    public void setPrice(double r_price) {
-        this.r_price = r_price;
-    }
-
     public Boolean getIs_available() {
         return is_available;
     }
@@ -72,5 +69,30 @@ public class Ride_Entity {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public int getMin_age() {
+        return min_age;
+    }
+
+    public void setMin_age(int min_age) {
+        this.min_age = min_age;
+    }
+
+    public double getR_price() {
+        return r_price;
+    }
+
+    public void setR_price(double r_price) {
+        this.r_price = r_price;
+    }
+
+    public byte[] getR_image() {
+        return r_image;
+    }
+
+    public void setR_image(byte[] r_image) {
+        this.r_image = r_image;
+    }
+
 }
 
