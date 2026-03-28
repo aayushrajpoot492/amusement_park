@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #2F4F4F;
+            display: flex;
+            align-items:center;
+            justify-content: flex-end;
+            min-height: 100vh;
+            margin: 0;
+            padding-right: 100px;
+            padding-left: 80    px;
+
+            background-image:url("/close-up-ferris-wheel.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 450px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+             margin: 0;
+
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            font-weight: 800;
+
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 465px;
+            padding: 15px;
+            margin-top: 15px;
+            background: #008B8B;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="color: Dark slate gray";>User Detail Form</h2>
+    <form action="/saveuser" method="post">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" required name="name">
+
+        <label>Phone Number</label>
+        <input type="number" placeholder="Enter your Phone Number" required name="phoneno">
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required name="password">
+
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Enter Confirm password" required name="confirmpassword">
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
