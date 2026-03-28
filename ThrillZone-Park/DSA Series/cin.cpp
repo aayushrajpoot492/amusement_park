@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
+
 int main(){
-    cout << "Atches 23" << "Std"<< endl;
+    int age;
+    cout << age << endl;
     return 0;
 }

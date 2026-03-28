@@ -1,6 +1,8 @@
 package com.example.ThrillZone.Park.Review;
 
 import jakarta.persistence.*;
+import com.example.ThrillZone.Park.Master.User_Master;
+import com.example.ThrillZone.Park.Rides.Ride_Entity;
 
 @Entity
 public class Review_Entity {
@@ -9,15 +11,21 @@ public class Review_Entity {
     Long review_id;
 
     int rating;
-    String comment;
+    String comment,best_feature;;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "m_id", nullable = false)
+     User_Master user;
 
     public Review_Entity() {
     }
 
-    public Review_Entity(Long review_id, int rating, String comment) {
+    public Review_Entity(Long review_id, int rating, String comment, String best_feature, User_Master user) {
         this.review_id = review_id;
         this.rating = rating;
         this.comment = comment;
+        this.best_feature = best_feature;
+        this.user = user;
     }
 
     public Long getReview_id() {
@@ -42,6 +50,22 @@ public class Review_Entity {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getBest_feature() {
+        return best_feature;
+    }
+
+    public void setBest_feature(String best_feature) {
+        this.best_feature = best_feature;
+    }
+
+    public User_Master getUser() {
+        return user;
+    }
+
+    public void setUser(User_Master user) {
+        this.user = user;
     }
 }
 
