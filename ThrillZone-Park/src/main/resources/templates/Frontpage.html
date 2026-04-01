@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ThrillZone</title>
+    <style>
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    background: #0d1b2a;
+    padding: 15px 30px;
+     border: 1px solid white;
+    align-items: center;
+}
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.video-text h1 {
+  font-size: 40px;
+}
+
+.video-text p {
+  font-size: 18px;
+}
+
+       .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logo span {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+        .btn {
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+        .login-btn {
+    background: #007bff;
+  color: white;
+}
+
+        .signup-btn {
+    background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="img_1.png" alt="Logo">
+        <span>ThrillZone</span>
+    </div>
+    <div>
+        <button class="btn login-btn" onclick="goToLogin()">Login</button>
+        <button class="btn signup-btn" onclick="goToSignup()">Signup</button>
+    </div>
+</div>
+<div class="video-container">
+    <video autoplay muted loop>
+        <source src="/14983692_3840_2160_30fps.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+
+    <div class="video-text">
+        <h1>Welcome to ThrillZone</h1>
+        <p>Experience the ultimate fun & adventure</p>
+    </div>
+</div>
+
+<script>
+    function goToLogin() {
+        window.location.href = "/login";
+    }
+
+    function goToSignup() {
+        window.location.href = "/signform";
+    }
+</script>
+
+</body>
+</html>

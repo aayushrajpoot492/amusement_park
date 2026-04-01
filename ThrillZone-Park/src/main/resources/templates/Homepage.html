@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI;
+    }
+
+    body{
+    background:white;
+    }
+
+    /* HEADER */
+
+    .header{
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background:linear-gradient(#a8edea,#fed6e3);
+    }
+    .container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:80vh;
+}
+
+ .rides-section{
+        display:flex;
+        justify-content:center;
+        gap:60px;
+        margin-top:100px;
+        flex-wrap:wrap;
+        }
+
+        /* CARD */
+
+        .ride-card{
+        width:260px;
+        background:#ddd;
+        border-radius:15px;
+        overflow:hidden;
+        box-shadow:0 6px 15px rgba(0,0,0,0.4);
+        transition:0.3s;
+        }
+
+        .ride-card:hover{
+        transform:scale(1.05);
+        }
+
+
+/* IMAGE FIX */
+
+.ride-card img{
+width:100%;
+height:180px;
+object-fit:cover;   /* important */
+display:block;
+}
+
+  .ride-btn{
+display:block;
+margin:25px auto;
+padding:16px 50px;
+font-size:22px;
+font-weight:bold;
+border:none;
+border-radius:40px;
+ background: linear-gradient(#a8edea,#fed6e3);
+color:black;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* HOVER EFFECT */
+
+.ride-btn:hover{
+transform:scale(1.15);
+background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+}
+
+
+
+
+    /* ANIMATED LOGO */
+
+    .logo{
+    font-size:34px;
+    font-weight:bold;
+    letter-spacing:2px;
+
+    background: linear-gradient(
+    90deg,
+    #ff0066,
+    #ffcc00,
+    #00ffcc,
+    #3399ff,
+    #ff0066
+    );
+
+    background-size:300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation: logoMove 6s linear infinite;
+    }
+
+    /* Gradient Animation */
+
+    @keyframes logoMove{
+    0%{
+    background-position:0%;
+    }
+
+    100%{
+    background-position:300%;
+    }
+    }
+
+    /* NAV */
+
+    .nav{
+  display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    color:black;
+    margin:0 18px;
+    font-size:17px;
+    gap: 20px;
+    }
+
+    .nav a:hover{
+    color:#FFFFFF;
+    }
+    .nav a {
+    text-decoration: none !important;
+}
+
+    /* LOGOUT BUTTON */
+
+    .logout{
+   margin-left: 20px;     /* Links se thodi doori */
+    padding: 8px 20px;
+    border: 2px solid #4B0082;
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    }
+
+    .logout:hover{
+    background:white;
+    color:black;
+    }
+        .footer{
+background:#111;
+color:white;
+padding:40px 60px 20px;
+font-family:'Cinzel', serif;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.footer h2,
+.footer h3{
+font-family:'Cinzel', serif;
+}
+
+.footer-section p{
+margin:5px 0;
+}
+
+.footer-section a{
+display:block;
+color:white;
+text-decoration:none;
+margin:5px 0;
+transition:0.3s;
+}
+
+.footer-section a:hover{
+color:#00ffff;
+}
+
+.footer-bottom{
+text-align:center;
+margin-top:30px;
+border-top:1px solid #444;
+padding-top:15px;
+font-size:14px;
+}
+    </style>
+</head>
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        ThrillZone
+    </div>
+
+    <nav class="nav">
+        <a href="#">Park Profile</a>
+        <a href="#">Rides</a>
+        <a href="#">Tickets</a>
+        <a href="#">Events</a>
+    </nav>
+
+    <div class="right-section">
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <div class="rides-section">
+
+        <div>
+            <div class="ride-card">
+                <img src="medium-shot-couple-pointing-carousel.jpg">
+            </div>
+            <button class="ride-btn">Rides</button>
+        </div>
+
+
+        <div>
+            <div class="ride-card">
+                <img src="preview.jpg">
+            </div>
+            <button class="ride-btn">Events</button>
+        </div>
+
+
+        <div>
+            <div class="ride-card">
+                <img src="Gemini_Generated_Image_3csxid3csxid3csx.png">
+            </div>
+            <button class="ride-btn">Food Court</button>
+        </div>
+
+    </div>
+
+</div>
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h2>🎢 ThrillZone</h2>
+            <p>Experience the best rides and fun at ThrillZone Amusement Park.</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="#">Park Profile</a>
+            <a href="#">Rides</a>
+            <a href="#">Tickets</a>
+            <a href="#">Events</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: thrillzone@gmail.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Location: Lucknow, India</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 ThrillZone Amusement Park | All Rights Reserved</p>
+    </div>
+
+</footer>
+<script>
+
+    function logout() {
+
+    window.location.href = "/login";
+
+    }
+
+</script>
+
+</body>
+</html>

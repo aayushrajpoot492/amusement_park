@@ -22,14 +22,30 @@ public class Controller {
         user_master.setM_name(name);
         user_master.setPhone_no(phoneno);
         user_master.setPassword(password);
-        user_master.setConfirmpassword(confirmpassword);
         user_master_repo.save(user_master);
         return "confirm";
     }
 
-    @GetMapping("signform")
+    @GetMapping("/signform")
     public String Signupform() {
         return "Signupform";
+    }
+
+    @GetMapping("/Frontpage")
+    public String Frontpage ()
+    {
+        return "Frontpage";
+
+    }
+    @GetMapping("/Homepage")
+    public String Homepage()
+    {
+        return "Homepage";
+    }
+    @GetMapping("/Ridepage")
+    public String Ridepage()
+    {
+        return "Ridepage";
     }
 
 }

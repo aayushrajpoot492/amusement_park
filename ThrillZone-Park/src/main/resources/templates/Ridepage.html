@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ThrillZone Rides</title>
+
+    <style>
+
+        body{
+        margin:0;
+        font-family:Arial;
+        background:#555;
+        }
+
+        /* HEADER */
+
+        header{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px 60px;
+        background:#2c2c2c;
+        color:white;
+        }
+
+        .logo{
+        font-size:30px;
+        font-weight:bold;
+        background:linear-gradient(90deg,#7CFC00,#00FFFF);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        }
+
+        nav a{
+        color:white;
+        text-decoration:none;
+        margin-left:30px;
+        font-size:18px;
+        }
+
+        /* RIDES SECTION */
+
+        .rides-section{
+        display:flex;
+        justify-content:center;
+        gap:60px;
+        margin-top:100px;
+        flex-wrap:wrap;
+        }
+
+        /* CARD */
+
+        .ride-card{
+        width:260px;
+        background:#ddd;
+        border-radius:15px;
+        overflow:hidden;
+        box-shadow:0 6px 15px rgba(0,0,0,0.4);
+        transition:0.3s;
+        }
+
+        .ride-card:hover{
+        transform:scale(1.05);
+        }
+
+        /* IMAGE */
+
+        .ride-card img{
+        width:100%;
+        height:170px;
+        object-fit:cover;
+        }
+
+        /* BUTTON */
+
+        .ride-btn{
+        display:block;
+        margin:20px auto;
+        padding:12px 35px;
+        background:#ff4d4d;
+        border:none;
+        color:white;
+        font-size:18px;
+        border-radius:30px;
+        cursor:pointer;
+        transition:0.3s;
+        }
+
+        .ride-btn:hover{
+        background:#ff1a1a;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">ThrillZone</div>
+
+    <nav>
+        <a href="#">Park Profile</a>
+        <a href="#">Rides</a>
+        <a href="#">Tickets</a>
+    </nav>
+
+</header>
+
+
+<!-- RIDES -->
+
+<div class="rides-section">
+
+    <div>
+        <div class="ride-card">
+            <img src="ride1.jpg">
+        </div>
+        <button class="ride-btn">Ride</button>
+    </div>
+
+
+    <div>
+        <div class="ride-card">
+            <img src="ride2.jpg">
+        </div>
+        <button class="ride-btn">Ride</button>
+    </div>
+
+
+    <div>
+        <div class="ride-card">
+            <img src="ride3.jpg">
+        </div>
+        <button class="ride-btn">Ride</button>
+    </div>
+
+</div>
+
+</body>
+</html>
