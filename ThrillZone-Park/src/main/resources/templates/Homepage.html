@@ -19,11 +19,15 @@
 
     .header{
    display: flex;
+   margin-top:10px;
+   margin-bottom: -50px;
     justify-content: space-between;
     align-items: center;
     padding: 10px 5%;
-    background:linear-gradient(#a8edea,#fed6e3);
+    background:white;
+box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
     }
+
     .container{
 display:flex;
 justify-content:center;
@@ -31,68 +35,110 @@ align-items:center;
 height:80vh;
 }
 
- .rides-section{
-        display:flex;
-        justify-content:center;
-        gap:60px;
-        margin-top:100px;
-        flex-wrap:wrap;
-        }
-
-        /* CARD */
-
-        .ride-card{
-        width:260px;
-        background:#ddd;
-        border-radius:15px;
-        overflow:hidden;
-        box-shadow:0 6px 15px rgba(0,0,0,0.4);
-        transition:0.3s;
-        }
-
-        .ride-card:hover{
-        transform:scale(1.05);
-        }
-
-
-/* IMAGE FIX */
-
-.ride-card img{
-width:100%;
-height:180px;
-object-fit:cover;   /* important */
-display:block;
+.rides-container {
+   display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-content: end;
+    gap: 15px;
+    padding: 20px;
+    align-items: stretch;
+     width: 100%;
 }
 
-  .ride-btn{
-display:block;
-margin:25px auto;
-padding:16px 50px;
-font-size:22px;
-font-weight:bold;
-border:none;
-border-radius:40px;
- background: linear-gradient(#a8edea,#fed6e3);
-color:black;
-cursor:pointer;
-transition:all 0.3s ease;
-box-shadow:0 5px 15px rgba(0,0,0,0.4);
+.ride-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
 }
 
-/* HOVER EFFECT */
-
-.ride-btn:hover{
-transform:scale(1.15);
-background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+.ride-card:hover {
+    transform: translateY(-10px);
 }
 
+.card-image {
+    width: 100%;
+    height: 180px;
+    background: #f0f0f0;
+}
 
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
+.card-content {
+    padding: 20px;
+}
 
-    /* ANIMATED LOGO */
+.card-content h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #666;
+    height: 60px;
+    overflow: hidden;
+}
+
+.plus-icon {
+    font-size: 60px;
+    color: blue;
+    font-weight: bold;
+    line-height: 1;
+    align: center;
+}
+.see-more-box {
+    background-color: white;
+    color: blue;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 65%;
+    padding: 10px;
+    text-align: center;
+}
+.see-more-text {
+    color: blue;
+}
+
+.view-btn {
+    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.view-btn:hover {
+    background: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+    .rides-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .rides-container { grid-template-columns: 1fr; }
+}
 
     .logo{
     font-size:34px;
+    white-space: nowrap;
     font-weight:bold;
     letter-spacing:2px;
 
@@ -112,8 +158,6 @@ background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
     animation: logoMove 6s linear infinite;
     }
 
-    /* Gradient Animation */
-
     @keyframes logoMove{
     0%{
     background-position:0%;
@@ -122,12 +166,38 @@ background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
     100%{
     background-position:300%;
     }
-    }
+ }
+ .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Text styling */
+    color: white;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+
+.logo-text {
+    margin: 0;
+}
 
     /* NAV */
 
     .nav{
-  display: flex;
+    display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
@@ -138,16 +208,50 @@ background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
     }
 
     .nav a:hover{
-    color:#FFFFFF;
+    color: #000000;
     }
     .nav a {
     text-decoration: none !important;
 }
+.rainbow-text {
+margin-top: 90px;
+    font-family: 'Arial', sans-serif;
+     margin-bottom: -50px;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(
+                45deg,
+                #205374, /* Blue */
+                #27A09E, /* Purple */
+                #7DE393, /* Red */
+                #D3F5CE  /* Orange */
+            );
 
-    /* LOGOUT BUTTON */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+
+.display{
+    text-align: left;
+    margin-left: 50px;
+    margin-top: 90px;
+    margin-bottom: -60px;
+    font-family: sans-serif;
+    font-size: 2.0rem;
+    font-weight: 900;
+     color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
     .logout{
-   margin-left: 20px;     /* Links se thodi doori */
+   margin-left: 20px;
     padding: 8px 20px;
     border: 2px solid #4B0082;
     background: transparent;
@@ -156,8 +260,8 @@ background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
     }
 
     .logout:hover{
-    background:white;
-    color:black;
+    background:#6B2A5F;
+    color:#FFE8D6;
     }
         .footer{
 background:#111;
@@ -204,18 +308,16 @@ font-size:14px;
     </style>
 </head>
 <body>
-
 <header class="header">
-
-    <div class="logo">
-        ThrillZone
+    <div class="logo-container">
+        <div class="logo-circle">AP</div> <h1 class="logo">ThrillZone-Park</h1>
     </div>
 
     <nav class="nav">
-        <a href="#">Park Profile</a>
         <a href="#">Rides</a>
-        <a href="#">Tickets</a>
         <a href="#">Events</a>
+        <a href="#">Food Court</a>
+        <a href="#">Park Profile</a>
     </nav>
 
     <div class="right-section">
@@ -223,37 +325,68 @@ font-size:14px;
     </div>
 
 </header>
+    <h1 class="rainbow-text">
+        Experience the Thrill <br>
+        at Adventure World
+    </h1>
+<h2 class="display">
+    Our Innovative Rides
+</h2>
 
 <div class="container">
 
-    <div class="rides-section">
-
-        <div>
-            <div class="ride-card">
-                <img src="medium-shot-couple-pointing-carousel.jpg">
+    <div class="rides-container">
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="ferris-wheel-close-up.jpg" alt="Thunder Bolt">
             </div>
-            <button class="ride-btn">Rides</button>
+            <div class="card-content">
+                <h3>Thunder Bolt</h3>
+                <p>Experience high-speed drops and gravity-defying loops on our fastest coaster.</p>
+                <button class="view-btn">View Details</button>
+            </div>
         </div>
 
-
-        <div>
-            <div class="ride-card">
-                <img src="preview.jpg">
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="colorful-ferris-wheel-with-clear-blue-sky.jpg" alt="Sky High">
             </div>
-            <button class="ride-btn">Events</button>
+            <div class="card-content">
+                <h3>Sky High</h3>
+                <p>Get a bird's eye view of the entire park with our giant Ferris wheel.</p>
+                <button class="view-btn">View Details</button>
+            </div>
         </div>
 
-
-        <div>
-            <div class="ride-card">
-                <img src="Gemini_Generated_Image_3csxid3csxid3csx.png">
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="colourful-plastic-slides-water-park-sunlight.jpg" alt="Aqua Splash">
             </div>
-            <button class="ride-btn">Food Court</button>
+            <div class="card-content">
+                <h3>Aqua Splash</h3>
+                <p>Make a splash in our massive water park featuring 20+ thrilling slides.</p>
+                <button class="view-btn">View Details</button>
+            </div>
+        </div>
+
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="medium-shot-couple-pointing-carousel.jpg" alt="Magic Carousel">
+            </div>
+            <div class="card-content">
+                <h3>Roller Coaster</h3>
+                <p>A classic family favorite with beautifully handcrafted horses and music.</p>
+                <button class="view-btn">View Details</button>
+            </div>
         </div>
 
     </div>
-
+    <div class="see-more-box">
+        <div class="plus-icon">+</div>
+        <div class="see-more-text">See More</div>
+    </div>
 </div>
+
 <!-- FOOTER -->
 
 <footer class="footer">
@@ -294,7 +427,6 @@ font-size:14px;
     window.location.href = "/login";
 
     }
-
 </script>
 
 </body>

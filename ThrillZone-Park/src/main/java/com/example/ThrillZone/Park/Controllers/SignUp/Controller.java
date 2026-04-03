@@ -42,11 +42,5 @@ public class Controller {
     {
         return "Homepage";
     }
-    @GetMapping("/Ridepage")
-    public String Ridepage()
-    {
-        return "Ridepage";
-    }
-
 }
 
