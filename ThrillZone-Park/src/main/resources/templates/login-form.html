@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymleaf.org">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="/css/login-form.css">
+</head>
+<body>
+<div class="login-container">
+    <h2> LOGIN </h2>
+    <form th:action="@{/login}" method="post">
+        <div class="input-group">
+            <label>Email:</label>
+            <input type="text" name="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password:</label>
+            <input type="number" name="otp" placeholder="Enter Password" required>
+            <div class="forgot-links-container">
+                <a href="#" class="forgot-link">Forgot Email?</a>
+                <a href="#" class="forgot-link">Forgot Password?</a>
+            </div>
+        </div>
+        <p class="signup-text">
+            Don't Have An Account?
+            <a href="dashboard" style="text-decoration:none ; color: #4b7bec; font-weight: bold;">Sign Up</a>
+        </p>
+        <button class="login-btn">Login</button>
+
+        <div class="separator">OR</div>
+
+        <button class="google-btn">
+            <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google Logo">
+            <span>Sign in with Google</span>
+        </button>
+    </form>
+</div>
+</body>
+</html>

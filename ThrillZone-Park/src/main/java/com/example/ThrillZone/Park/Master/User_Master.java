@@ -14,6 +14,7 @@ public class User_Master {
 
     String m_name,password;
 
+    @Column(unique = true)
     Long phone_no;
     boolean is_verified;
 
