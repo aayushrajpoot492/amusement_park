@@ -22,7 +22,6 @@ public class Controller {
         user_master.setM_name(name);
         user_master.setPhone_no(phoneno);
         user_master.setPassword(password);
-        user_master.setConfirmpassword(confirmpassword);
         user_master_repo.save(user_master);
         return "confirm";
     }
@@ -30,6 +29,18 @@ public class Controller {
     @GetMapping("signform")
     public String Signupform() {
         return "Signupform";
+    }
+    @GetMapping("/foodcourt")
+    public String foodcourt(){
+        return "food";
+    }
+    @GetMapping("/events")
+    public String events(){
+        return "event";
+    }
+    @GetMapping("/dinner")
+    public String dinner(){
+        return "dinner";
     }
 
 }

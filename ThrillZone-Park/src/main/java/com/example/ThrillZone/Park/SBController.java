@@ -24,6 +24,6 @@ public class SBController {
         }
         @GetMapping("/dashboard")
     public String dashboard(){
-        return "dashboard";
+        return "splash";
         }
     }
