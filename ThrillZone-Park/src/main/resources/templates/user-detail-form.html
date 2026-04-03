@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail Form</title>
+    <link rel="stylesheet" href="/css/user-detail-form.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h2 style="color: DarkSlateGray;">User Detail Form</h2>
+    <form id="detailForm">
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" id="uname" required name="uname">
+        <span id="nameError" class="error-msg"></span>
+
+        <label>Phone Number</label>
+        <input type="number" placeholder="Enter your Phone Number" id="phoneNo" required name="phoneNo">
+        <span id="phoneError" class="error-msg"></span>
+
+        <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Enter password" required name="password">
+            <span class="toggle-password" onclick="togglePass('password', this)">👁️</span>
+        </div>
+        <span id="passError" class="error-msg"></span>
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPass" placeholder="Enter Confirm password" required name="confirmPass">
+        <span id="confirmError" class="error-msg"></span>
+
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+</div>
+
+<script src="/js/user-detail-form.js"></script>
+
+</body>
+</html>

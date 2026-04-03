@@ -5,160 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Food Court Lounge</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary-dark: #1a1a1a;
-            --accent: #ff9f43;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        }
-
-        .main-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            font-size: 3rem;
-            color: #333;
-            text-align: center;
-            text-transform: uppercase;
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-            margin-bottom: 50px;
-        }
-
-        .food-grid {
-            display: flex;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            justify-content: flex-start;
-        }
-
-        .category-card {
-            background-color: #fdfaf0;
-            border: 2px solid #2c3e50;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            transition: 0.3s ease;
-        }
-
-        .category-card:hover { transform: translateY(-10px); }
-
-        .img-header { width: 100%; height: 200px; object-fit: cover; }
-
-        .content { padding: 20px; text-align: center; }
-
-        .content h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-        }
-
-        .special-foods-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .food-oval {
-            background-color: #2c3e50;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid #ddd;
-            transition: 0.2s;
-        }
-
-        .food-oval:hover {
-            background: var(--primary-dark);
-            color: white;
-        }
-
-        #sidePage {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            right: 0;
-            background: white;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.2);
-            overflow-x: hidden;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .drawer-content { width: 400px; padding: 40px 30px; box-sizing: border-box; text-align: center; }
-
-        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 30px; cursor: pointer; }
-
-        .nutrition-row {
-            display: flex;
-            justify-content: space-around;
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-
-        .nutri-val { display: block; font-weight: 700; color: #e63946; }
-
-        .order-btn {
-            width: 100%;
-            padding: 15px;
-            background: black;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 25px;
-            font-weight: bold;
-            border: none;
-            transition: 0.3s;
-        }
-
-        .order-btn.added {
-            background: #22c55e;
-            pointer-events: none;
-        }
-  .plus-icon {
-    font-size: 60px;
-    color: blue;
-    font-weight: bold;
-    line-height: 1;
-    align: center;
-}
-.see-more-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    height: auto;
-    min-height: 380px;
-}
-.see-more-text {
-    color: blue;
-}
-    </style>
+    <link rel="stylesheet" href="/css/foodcourt.css">
 </head>
 <body>
 
@@ -186,7 +33,7 @@
         </div>
 
         <div class="category-card">
-            <img src="butterchicken.jpg" class="img-header">
+            <img src="/images/FoodCourt/butterchicken.jpg" class="img-header">
             <div class="content">
                 <h2>North Indian</h2>
                 <div class="special-foods-container">
@@ -200,7 +47,7 @@
         </div>
 
         <div class="category-card">
-            <img src="fishcurry.png" class="img-header">
+            <img src="/images/FoodCourt/fishcurry.png" class="img-header">
             <div class="content">
                 <h2>Eastern Indian</h2>
                 <div class="special-foods-container">
@@ -261,98 +108,6 @@
     </div>
 
 </div>
-
-<script>
-    const dishData = {
-
-        masalaDosa: { name: "Masala Dosa", price: "₹120", calories: "320 kcal", protein: "8g", fat: "12g", desc: "Crispy rice crepe with potato mash.", img: "Masala dosa.jpeg" },
-        idliSambar: { name: "Idli Sambar", price: "₹90", calories: "180 kcal", protein: "6g", fat: "2g", desc: "Steamed rice cakes with lentil stew.", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400" },
-        hyderabadiBiryani: { name: "Hyderabadi Biryani", price: "₹350", calories: "550 kcal", protein: "22g", fat: "18g", desc: "Aromatic basmati rice cooked on dum.", img: "hyderabadi biryaani.jpeg" },
-        appam: { name: "Appam", price: "₹150", calories: "210 kcal", protein: "4g", fat: "5g", desc: "Fermented rice pancakes.", img: "appam.jpeg" },
-        meduVada: { name: "Medu Vada", price: "₹100", calories: "280 kcal", protein: "7g", fat: "15g", desc: "Deep fried lentil donuts.", img: "medu vada.jpeg" },
-
-
-        butterChicken: { name: "Butter Chicken", price: "₹450", calories: "480 kcal", protein: "28g", fat: "35g", desc: "Grilled chicken in creamy tomato gravy.", img: "chicken.jpg" },
-        dalMakhani: { name: "Dal Makhani", price: "₹280", calories: "350 kcal", protein: "12g", fat: "18g", desc: "Slow cooked black lentils with butter.", img: "Dal Makhani.jpg" },
-        paneerTikka: { name: "Paneer Tikka", price: "₹320", calories: "310 kcal", protein: "18g", fat: "20g", desc: "Spiced grilled cottage cheese.", img: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400" },
-        choleBhature: { name: "Chole Bhature", price: "₹180", calories: "520 kcal", protein: "14g", fat: "28g", desc: "Spicy chickpeas with fried bread.", img: "Chole Bhature.jpeg" },
-        naan: { name: "Garlic Naan", price: "₹60", calories: "150 kcal", protein: "4g", fat: "5g", desc: "Soft leavened flatbread.", img: "Naan.jpg" },
-
-
-        rasgulla: { name: "Rasgulla", price: "₹80", calories: "210 kcal", protein: "4g", fat: "2g", desc: "Spongy syrup soaked cheese balls.", img: "rasgulla.jpg" },
-        fishCurry: { name: "Fish Curry", price: "₹320", calories: "290 kcal", protein: "24g", fat: "14g", desc: "Authentic mustard based fish gravy.", img: "fishcurry.png" },
-        luchi: { name: "Luchi Alur Dom", price: "₹140", calories: "410 kcal", protein: "7g", fat: "22g", desc: "Deep fried flatbread with potato curry.", img: "Luchi Alur Dom.avif" },
-        mishtiDoi: { name: "Mishti Doi", price: "₹100", calories: "150 kcal", protein: "5g", fat: "6g", desc: "Traditional Bengali sweet yogurt.", img: "mishti doi.jpg" },
-        pitha: { name: "Pitha", price: "₹120", calories: "230 kcal", protein: "3g", fat: "4g", desc: "Assorted rice flour delicacies.", img: "Pitha.jpg" },
-
-
-        cheesePizza: { name: "Cheese Pizza", price: "₹350", calories: "280 kcal", protein: "12g", fat: "14g", desc: "Classic mozzarella pizza.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
-        beefBurger: { name: "Classic Beef Burger", price: "₹280", calories: "450 kcal", protein: "24g", fat: "22g", desc: "Juicy patty with fresh lettuce.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" },
-        pasta: { name: "Pasta Carbonara", price: "₹380", calories: "420 kcal", protein: "16g", fat: "24g", desc: "Creamy pasta with black pepper.", img: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400" },
-        tacos: { name: "Mexican Tacos", price: "₹220", calories: "310 kcal", protein: "14g", fat: "15g", desc: "Hard shells with spicy beans.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400" },
-        hotDogs: { name: "American Hot Dog", price: "₹180", calories: "290 kcal", protein: "12g", fat: "18g", desc: "Sausage in a soft bun.", img: "https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=400" },
-
-
-        cheeseSouffle: { name: "Cheese Soufflé", price: "₹450", calories: "310 kcal", protein: "14g", fat: "22g", desc: "Airy French cheese delight.", img: "Cheese Soufflé.jpg" },
-        chocolateSouffle: { name: "Chocolate Soufflé", price: "₹520", calories: "410 kcal", protein: "8g", fat: "25g", desc: "Rich dark chocolate souffle.", img: "Chocolate Soufflé.jpg" },
-        lemonSouffle: { name: "Lemon Soufflé", price: "₹390", calories: "260 kcal", protein: "6g", fat: "12g", desc: "Zesty and light dessert.", img: "Lemon Soufflé.jpg" },
-        berrySouffle: { name: "Wild Berry Soufflé", price: "₹480", calories: "280 kcal", protein: "5g", fat: "10g", desc: "Fruity and fluffy.", img: "Wild Berry Soufflé.webp" },
-        icecream: { name: "Ice Cream", price: "₹50", calories: "70 kcal", protein: "6g", fat: "12g", desc: "Savory vanilla icecream.", img: "Ice Cream.jpg" },
-
-
-        momo: { name: "Steamed Momo", price: "₹150", calories: "220 kcal", protein: "10g", fat: "8g", desc: "Nepali style handmade dumplings.", img: "https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=400" },
-        thali: { name: "Thakali Thali", price: "₹450", calories: "650 kcal", protein: "28g", fat: "20g", desc: "Complete Nepali meal set.", img: "Thakali Thali.webp" },
-        selRoti: { name: "Sel Roti", price: "₹100", calories: "320 kcal", protein: "4g", fat: "18g", desc: "Rice flour sweet ring bread.", img: "Sel Roti.jpg" },
-        dhido: { name: "Dhido", price: "₹280", calories: "410 kcal", protein: "12g", fat: "5g", desc: "Traditional flour mush meal.", img: "Dhido.webp" },
-        yomari: { name: "Yomari", price: "₹120", calories: "290 kcal", protein: "5g", fat: "7g", desc: "Newari steamed sweet delicacy.", img: "Yomari.webp" }
-    };
-
-    function showDetails(dishKey) {
-        const dish = dishData[dishKey];
-        if (!dish) return;
-
-        const body = document.getElementById('drawerBody');
-        body.innerHTML = `
-            <img src="${dish.img}" style="width:100%; border-radius:15px; height:250px; object-fit:cover;">
-            <h2 style="font-family:'Cinzel'; margin-top:20px;">${dish.name}</h2>
-            <p style="color:#22c55e; font-size:24px; font-weight:bold;">${dish.price}</p>
-            <div class="nutrition-row">
-                <div><span class="nutri-val">${dish.calories}</span><small>Calories</small></div>
-                <div><span class="nutri-val">${dish.protein}</span><small>Protein</small></div>
-                <div><span class="nutri-val">${dish.fat}</span><small>Fat</small></div>
-            </div>
-            <p style="color:#555; text-align:left; line-height:1.6;">${dish.desc}</p>
-            <button id="orderBtn" class="order-btn" onclick="handleOrder()">Order Now</button>
-        `;
-        document.getElementById('sidePage').style.width = "400px";
-    }
-    function handleOrder() {
-    const btn = document.getElementById('orderBtn');
-
-    btn.innerHTML = "✓ 1 Plate Added";
-
-    btn.style.background = "#22c55e";
-    btn.style.color = "white";
-
-    btn.style.pointerEvents = "none";
-
-    setTimeout(() => {
-        btn.innerHTML = "Order Now";
-        btn.style.background = "black";
-        btn.style.pointerEvents = "auto";
-    }, 2000);
-}
-
-    function closeSidePage() {
-        document.getElementById('sidePage').style.width = "0";
-    }
-    window.addEventListener('click', function(e) {
-  const sidePage = document.getElementById('sidePage');
-
-  if (!sidePage.contains(e.target) && !e.target.classList.contains('food-oval')) {
-    closeSidePage();
-  }
-});
-</script>
+<script src="/js/foodcourt.js"></script>
 </body>
 </html>

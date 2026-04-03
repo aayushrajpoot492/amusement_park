@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 380px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+h2 { text-align: center; margin-bottom: 10px; color: #333; }
+p { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
+
+.otp-boxes {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.otp-boxes input {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.otp-boxes input:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.2);
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #6a11cb;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover { background: #2575fc; }
+
+.link-btn {
+    background: none;
+    border: none;
+    color: #888;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: underline;
+}

@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card {
+    width: 380px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+h2 { text-align: center; margin-bottom: 10px; color: #333; }
+p { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
+
+input[type="email"] {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="email"]:focus { border-color: #6a11cb; }
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #6a11cb;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover { background: #2575fc; }
+
+.modal-overlay {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    margin: auto;
+}
+
+.modal-icon { font-size: 40px; margin-bottom: 10px; }
+
+.btn-primary {
+    background: #6a11cb;
+    color: white;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #2575fc;
+}

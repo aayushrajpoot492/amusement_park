@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify OTP - ThrillZone</title>
+  <link rel="stylesheet" href="/css/otp-verify.css">
+</head>
+<body>
+<div class="card">
+  <h2>Verify OTP</h2>
+  <p id="subtitle">Enter the 4-letter code sent to your email</p>
+
+  <form onsubmit="event.preventDefault(); verifyOtp();">
+    <div class="otp-boxes">
+      <input type="text" maxlength="1" oninput="moveNext(this, 1)" onkeydown="handleNavigation(event, 0)" style="text-transform: uppercase;" required/>
+      <input type="text" maxlength="1" oninput="moveNext(this, 2)" onkeydown="handleNavigation(event, 1)" style="text-transform: uppercase;" required/>
+      <input type="text" maxlength="1" oninput="moveNext(this, 3)" onkeydown="handleNavigation(event, 2)" style="text-transform: uppercase;" required/>
+      <input type="text" maxlength="1" onkeydown="handleNavigation(event, 3)" style="text-transform: uppercase;" required/>
+    </div>
+    <button type="submit" class="btn">Verify & Proceed</button>
+    <button type="button" class="link-btn" onclick="window.location.href='/signup-form'">Change Email</button>
+  </form>
+</div>
+
+<script src="/js/otp-verify.js"></script>
+</body>
+</html>
