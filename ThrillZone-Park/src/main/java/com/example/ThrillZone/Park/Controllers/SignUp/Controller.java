@@ -42,6 +42,10 @@ public class Controller {
     public String dinner(){
         return "dinner";
     }
+    @GetMapping("/splash")
+    public String splash (){
+        return "splash";
+    }
 
 }
 

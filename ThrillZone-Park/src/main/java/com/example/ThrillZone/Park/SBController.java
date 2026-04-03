@@ -22,8 +22,4 @@ public class SBController {
             model.addAttribute("otp",otp);
             return "logging";
         }
-        @GetMapping("/dashboard")
-    public String dashboard(){
-        return "splash";
-        }
     }
