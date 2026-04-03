@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Bunch</title>
+    <style>
+        body {
+            background-color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .snake-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 100px 80px;
+            min-width: max-content;
+            min-height: 500px;
+        }
+
+        /* Card ki basic styling */
+        .card {
+           flex: 0 0 220px;
+            background: #fffbf2;
+            padding: 20px;
+            border-radius: 50px 50px 25px 25px; /* Saare corners circular set kar diye */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            /* Orange line hatane ke liye border remove kar diya hai */
+            border: none;
+        }
+
+        /* Snake Logic: Alternate cards ko neeche push karna */
+        .card:nth-child(even) {
+            align-self: flex-end;
+        }
+
+        .card:nth-child(odd) {
+          align-self: flex-start;
+        }
+
+        .image-circle {
+            width: 100%;
+            aspect-ratio: 1/1;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f9f9f9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .image-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content h2 {
+           font-size: 1rem;
+            color: #2c3e50;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+        }
+
+        .must-try {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #7f8c8d;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .dish {
+           color: #e67e22;
+        }
+
+        p {
+            font-size: 0.8rem;
+            color: #5d6d7e;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+        .card:hover {
+            transform: translateY(0) scale(1.05);
+            z-index: 10;
+        }
+       body::-webkit-scrollbar {
+            height: 6px;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #d35400;
+            border-radius: 10px;
+        }
+        .plus-icon {
+    font-size: 60px;
+    color: blue;
+    font-weight: bold;
+    line-height: 1;
+    align: center;
+}
+.see-more-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* Isse card ki height baki cards ke barabar ho jayegi */
+    height: auto;
+    min-height: 380px; /* Apne cards ki height ke hisaab se adjust karein */
+}
+.see-more-text {
+    color: blue;
+}
+    </style>
+</head>
+<body>
+
+<div class="snake-wrapper">
+
+    <div class="card">
+        <div class="image-circle">
+            <img src="Masala dosa.jpeg" alt="Dosa">
+        </div>
+        <div class="content">
+            <h2>SOUTH INDIAN</h2>
+            <span class="must-try">Must Try: <span class="dish">Masala Dosa</span></span>
+            <p>Authentic flavors from the south, served with chutney and sambar.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-circle">
+            <img src="Samosa.jpg" alt="Samosa">
+        </div>
+        <div class="content">
+            <h2>NORTH INDIAN</h2>
+            <span class="must-try">Must Try: <span class="dish">Punjabi Samosa</span></span>
+            <p>Crispy shells stuffed with spiced potatoes and peas.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-circle">
+            <img src="paneer tikka.jpg" alt="Paneer">
+        </div>
+        <div class="content">
+            <h2>PANEER SPECIAL</h2>
+            <span class="must-try">Must Try: <span class="dish">Paneer Tikka</span></span>
+            <p>Grilled cottage cheese marinated in Indian spices.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-circle">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" alt="Salad">
+        </div>
+        <div class="content">
+            <h2>HEALTHY BITES</h2>
+            <span class="must-try">Must Try: <span class="dish">Fruit Salad</span></span>
+            <p>Fresh seasonal fruits with a dash of lime and honey.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="image-circle">
+            <img src="butterchicken.jpg" alt="Salad">
+        </div>
+        <div class="content">
+            <h2>Butter Chicken</h2>
+            <span class="must-try">Must Try: <span class="dish">Butter Chicken</span></span>
+            <p>Rich, creamy tomato-based curry with tender pieces of grilled chicken and spices.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="image-circle">
+            <img src="hyderabadi biryaani.jpeg" alt="Biryani">
+        </div>
+        <div class="content">
+            <h2>NIZAMI FLAVORS</h2>
+            <span class="must-try">Must Try: <span class="dish">Dum Biryani</span></span>
+            <p>Aromatic long-grain basmati rice cooked on slow flame with exotic spices.</p>
+        </div>
+    </div>
+    <div class="see-more-box" onclick="location.href='/foodcourt'">
+        <div class="plus-icon">+</div>
+        <div class="see-more-text">See More</div>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>
