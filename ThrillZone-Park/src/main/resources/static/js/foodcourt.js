@@ -1,6 +1,6 @@
  const dishData = {
 
-        masalaDosa: { name: "Masala Dosa", price: "₹120", calories: "320 kcal", protein: "8g", fat: "12g", desc: "Crispy rice crepe with potato mash.", img: "/images/FoodCourt/dosa.jpg" },
+        masalaDosa: { name: "Masala Dosa", price: "₹120", calories: "320 kcal", protein: "8g", fat: "12g", desc: "Crispy rice crepe with potato mash.", img: "/images/Dinner/Masala dosa.jpeg" },
         idliSambar: { name: "Idli Sambar", price: "₹90", calories: "180 kcal", protein: "6g", fat: "2g", desc: "Steamed rice cakes with lentil stew.", img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400" },
         hyderabadiBiryani: { name: "Hyderabadi Biryani", price: "₹350", calories: "550 kcal", protein: "22g", fat: "18g", desc: "Aromatic basmati rice cooked on dum.", img: "/images/FoodCourt/Biryaani.jpeg" },
         appam: { name: "Appam", price: "₹150", calories: "210 kcal", protein: "4g", fat: "5g", desc: "Fermented rice pancakes.", img: "/images/FoodCourt/appam.jpeg" },
