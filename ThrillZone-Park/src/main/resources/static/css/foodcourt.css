@@ -114,48 +114,6 @@
           text-align: center;
           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .card-img {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-        }
-
-        .btn-list button {
-          display: block;
-          width: 85%;
-          margin: 8px auto;
-          padding: 10px;
-          border-radius: 25px;
-          border: none;
-          background: #2C3E50; /* Dark blue/gray buttons */
-          color: white;
-          font-size: 14px;
-          cursor: pointer;
-        }
-        @media screen and (max-width: 768px) {
-
-          .food-container {
-            flex-direction: column; /* Cards ko ek ke niche ek laane ke liye */
-            align-items: center;    /* Center align karne ke liye */
-            gap: 20px;              /* Cards ke beech space ke liye */
-          }
-
-          .category-card {
-            width: 90%;             /* Mobile screen ki full width lene ke liye */
-            flex: none;             /* Laptop wala 'flex: 1' hata dega taaki pichke nahi */
-            max-width: 380px;       /* Bahut zyada bada na ho jaye */
-          }
-
-          .card-img {
-            height: 150px;          /* Mobile par image ki height thodi kam takki scroll kam karna pade */
-          }
-
-          /* Title agar screen se bahar ja raha ho toh */
-          .title {
-            font-size: 22px !important;
-            text-align: center;
-          }
-        }
 
         .drawer-content { width: 400px; padding: 40px 30px; box-sizing: border-box; text-align: center; }
 
@@ -208,4 +166,67 @@
 .see-more-text {
     color: blue;
 }
+@media screen and (max-width: 768px) {
+    /* 1. Main Grid ko column mein badlein taaki Cards stack ho jayein */
+    .food-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    .category-card {
+        width: 95% !important;
+        max-width: none !important;
+        flex: none !important;
+    }
+    .special-foods-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+               #sidePage {
+                   width: 0;
+                   max-width: 75vw !important; /* Mobile par sirf 75% screen lega */
+                   right: 0 !important;
+                   background: white;
+                   overflow-x: hidden !important; /* Side scroll band karne ke liye */
+               }
+
+               /* 2. Content ko container ke andar fit karein */
+               .drawer-content {
+                   padding: 15px !important;
+                   width: 100% !important; /* Force content to stay inside */
+                   display: flex;
+                   flex-direction: column;
+                   align-items: center;
+                   box-sizing: border-box; /* Padding ko width ke andar rakhne ke liye */
+               }
+
+               /* 3. Image ka size fix karein */
+               .drawer-content img {
+                   width: 100% !important; /* Drawer se bahar nahi jayegi */
+                   height: auto !important;
+                   max-height: 180px;
+                   object-fit: cover;
+                   border-radius: 12px;
+               }
+
+               /* 4. Text aur Price ko chota karein */
+               .drawer-content h2 {
+                   font-size: 1.2rem !important;
+                   margin-top: 10px;
+               }
+
+               .drawer-content p {
+                   font-size: 14px !important;
+                   text-align: center;
+               }
+      .nutrition-row {
+                         width: 100% !important;
+                         display: flex !important;
+                         justify-content: space-around !important;
+                         gap: 5px !important;
+                         padding: 10px 5px !important;
+                      }
 }
