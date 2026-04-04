@@ -40,6 +40,7 @@ height:80vh;
     padding: 20px;
     align-items: stretch;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .event-card {
@@ -133,8 +134,8 @@ height:80vh;
 }
 
 .view-btn {
-    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    color: black;
+    background: black;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 25px;
@@ -145,15 +146,47 @@ height:80vh;
 }
 
 .view-btn:hover {
-    background: #FFFFFF;
+    background: maroon;
 }
 
-/* Mobile Responsive - Tablet par 2 aur Mobile par 1 card dikhega */
-@media (max-width: 1024px) {
-    .event-container { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-    .event-container { grid-template-columns: 1fr; }
+/* --- Mobile Screen (768px and below) --- */
+@media screen and (max-width: 768px) {
+
+    /* 1. Container ko vertical line mein lane ke liye */
+    .event-container {
+        display: flex !important;
+        flex-direction: column !important; /* Cards ek ke niche ek aayenge */
+        align-items: center !important;
+        gap: 20px !important;
+        padding: 15px !important;
+        overflow-x: hidden !important; /* Side scroll rokne ke liye */
+    }
+
+    /* 2. Card ki width aur pichakne ka issue solve karne ke liye */
+    .event-card {
+        width: 90% !important; /* Mobile screen ki 90% width cover karega */
+        max-width: 400px !important;
+
+        /* Yeh line cards ko squeeze (pichakne) se rokegi */
+        flex: none !important;
+
+        margin-bottom: 10px !important;
+        display: block !important;
+        box-sizing: border-box;
+    }
+
+    /* 3. Image height fix */
+    .card-image img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+    }
+
+    /* 4. Text alignment */
+    .card-content {
+        text-align: center;
+        padding: 15px;
+    }
 }
         .display {
             font-family: 'Cinzel', serif;
