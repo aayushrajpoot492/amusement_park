@@ -4,175 +4,7 @@
     <meta charset="UTF-8">
     <title>Events Happening</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        .axis{
-        text-align: left;
-    margin-left: 50px;
-    margin-top: 30px;
-    font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 10px;
-
-    background: linear-gradient(45deg,rgba(0, 0, 0, 1) 37%, rgba(3, 3, 3, 1) 50%, rgba(79, 6, 62, 1) 88%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1));
-}
-        *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI;
-    }
-
-    body{
-    background:white;
-    }
-    .container{
-display:flex;
-justify-content:center;
-align-items:center;
-height:80vh;
-}
-
-.event-container {
-   display: grid;
-    grid-template-columns: repeat(5, auto);
-    /* Gap ko thoda kam rakhein taaki "+ card" pass aa jaye */
-    justify-content: end;
-    gap: 15px;
-    padding: 20px;
-    align-items: stretch;
-    width: 100%;
-}
-
-.event-card {
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft Shadow */
-    transition: transform 0.3s ease;
-    text-align: center;
-}
-
-.event-card:hover {
-    transform: translateY(-10px); /* Hover par thoda upar uthega */
-}
-
-/* Image Section (Half Card) */
-.card-image {
-    width: 100%;
-    height: 180px;
-    background: #f0f0f0; /* Image load hone tak placeholder */
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Text and Button Section */
-.card-content {
-    padding: 20px;
-}
-
-.card-content h3 {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.card-content p {
-    font-size: 0.9rem;
-    color: #666;
-    height: 60px;
-    overflow: hidden;
-}
-
-/* Add Card ki special styling */
-.add-card-container {
-   background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    border: 2px dashed #00ffd5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    min-height: 350px;
-    transition: all 0.3s ease;
-}
-
-.add-card-container:hover {
-    background: #e0fff9;
-    transform: translateY(-10px); /* Hover effect */
-    border-style: solid;
-    transition: 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-.plus-icon {
-    font-size: 60px;
-    color: blue;
-    font-weight: bold;
-    line-height: 1;
-    align: center;
-}
-.see-more-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    /* Isse card ki height baki cards ke barabar ho jayegi */
-    height: auto;
-    min-height: 380px; /* Apne cards ki height ke hisaab se adjust karein */
-}
-.see-more-text {
-    color: blue;
-}
-.add-content p {
-    font-family: sans-serif;
-    color: #555;
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-.view-btn {
-    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background 0.3s;
-}
-
-.view-btn:hover {
-    background: #FFFFFF;
-}
-
-/* Mobile Responsive - Tablet par 2 aur Mobile par 1 card dikhega */
-@media (max-width: 1024px) {
-    .event-container { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-    .event-container { grid-template-columns: 1fr; }
-}
-        .display {
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            color: #333;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-top: 50px;
-            opacity: 1;
-            text-shadow: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/event.css">
 </head>
 <body>
 <h2 class="axis">
@@ -182,7 +14,7 @@ height:80vh;
 <div class="event-container">
     <div class="event-card">
         <div class="card-image">
-            <img src="winterevent.jpg" alt="ThrillZone Winter Fest & Carnivibe">
+            <img src="/images/Event/winterevent.jpg" alt="ThrillZone Winter Fest & Carnivibe">
         </div>
         <div class="card-content">
             <h3>ThrillZone Winter Fest & Carnivibe</h3>
@@ -193,7 +25,7 @@ height:80vh;
 
     <div class="event-card">
         <div class="card-image">
-            <img src="summerevent.jpg" alt="Summer Carnival">
+            <img src="/images/Event/summerevent.jpg" alt="Summer Carnival">
         </div>
         <div class="card-content">
             <h3>ThrillZone Summer Carnival</h3>
@@ -204,7 +36,7 @@ height:80vh;
 
     <div class="event-card">
         <div class="card-image">
-            <img src="aquafest.jpg" alt="Aqua Splash">
+            <img src="/images/Event/aquafest.jpg" alt="Aqua Splash">
         </div>
         <div class="card-content">
             <h3>Aqua Fest</h3>
@@ -215,7 +47,7 @@ height:80vh;
 
     <div class="event-card">
         <div class="card-image">
-            <img src="holidayevent.jpg" alt="ThrillZone Holi-Day Bash">
+            <img src="/images/Event/holidayevent.jpg" alt="ThrillZone Holi-Day Bash">
         </div>
         <div class="card-content">
             <h3>ThrillZone Holi-Day Bash</h3>
