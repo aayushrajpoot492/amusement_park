@@ -7,8 +7,7 @@ body {
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            overflow-x: auto;
-            overflow-y: hidden;
+            overflow-y: auto;
             scroll-behavior: smooth;
         }
 
@@ -16,9 +15,12 @@ body {
             display: flex;
             align-items: center;
             gap: 40px;
-            padding: 100px 80px;
+            padding: 50px 20px;
+            width: 100%;
             min-width: max-content;
-            min-height: 500px;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow-y: visible;
         }
 
         /* Card ki basic styling */
@@ -27,20 +29,23 @@ body {
             background: #fffbf2;
             padding: 20px;
             border-radius: 50px 50px 25px 25px; /* Saare corners circular set kar diye */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            transition: transform 0.3s ease;
-            /* Orange line hatane ke liye border remove kar diya hai */
             border: none;
+            width: 90%;
+            max-width: 350px;
         }
-
-        /* Snake Logic: Alternate cards ko neeche push karna */
-        .card:nth-child(even) {
-            align-self: flex-end;
+        .card:active {
+            transform: scale(0.95); /* Halk sa dabne wala effect (Premium feel) */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #fff5e6; /* Halk sa color change */
         }
-
-        .card:nth-child(odd) {
-          align-self: flex-start;
+        .card-img{
+           width: 150px;
+           height: 150px;
+           border-radius: 50%;
+           object-fit: cover;
+           margin-bottom: 15px;
         }
 
         .image-circle {
@@ -114,4 +119,57 @@ body {
 }
 .see-more-text {
     color: blue;
+}
+@media screen and (min-width: 1024px) {
+body {
+        overflow: hidden;
+        height: 100vh;
+    }
+   .snake-wrapper {
+                   display: flex;
+                   flex-direction: row;
+                   justify-content: center;
+                   align-items: center;
+                   height: 100vh;
+                   gap: 15px;
+                   width: 100%;
+                   overflow: hidden;
+                   padding: 0 10px;
+                   box-sizing: border-box;
+       }
+
+       /* Cards ko shrink hone ki permission dein */
+       .card {
+           flex: 1 1 180px;  /* '1 1' ka matlab hai cards chote ho sakte hain fit hone ke liye */
+           max-width: 220px; /* Max size thoda kam kiya hai */
+           padding: 15px 10px;
+           font-size: 14px;  /* Font thoda chota taaki text wrap na ho */
+       }
+
+       /* Images ko thoda aur chota karein */
+       .card-img {
+           width: 100px;
+           height: 100px;
+           margin-bottom: 10px;
+       }
+       .card:hover {
+               transform: translateY(-15px) !important; /* 15px upar push karega */
+               box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Shadow gehri ho jayegi */
+               z-index: 10; /* Card upar dikhega */
+           }
+
+           /* 2. Snake Layout Logic (Laptop Only) */
+           .card:nth-child(even) {
+               margin-top: 60px; /* Even cards ko thoda niche rakhega */
+           }
+
+           .card:nth-child(odd) {
+               margin-top: -60px; /* Odd cards ko thoda upar rakhega */
+           }
+
+           /* Important: Hover par snake layout ki position disturb na ho */
+           .card:nth-child(even):hover {
+               transform: translateY(45px) scale(1.05) !important;
+               /* Agar card pehle se niche hai, toh wahi se thoda upar aur bada dikhega */
+           }
 }
