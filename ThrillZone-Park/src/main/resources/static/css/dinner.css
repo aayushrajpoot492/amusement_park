@@ -28,7 +28,7 @@ body {
            flex: 0 0 220px;
             background: #fffbf2;
             padding: 20px;
-            border-radius: 50px 50px 25px 25px; /* Saare corners circular set kar diye */
+            border-radius: 50px 50px 25px 25px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             border: none;
@@ -36,9 +36,9 @@ body {
             max-width: 350px;
         }
         .card:active {
-            transform: scale(0.95); /* Halk sa dabne wala effect (Premium feel) */
+            transform: scale(0.95);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background-color: #fff5e6; /* Halk sa color change */
+            background-color: #fff5e6;
         }
         .card-img{
            width: 150px;
@@ -115,7 +115,7 @@ body {
     align-items: center;
     cursor: pointer;
     height: auto;
-    min-height: 380px; /* Apne cards ki height ke hisaab se adjust karein */
+    min-height: 380px;
 }
 .see-more-text {
     color: blue;
@@ -138,38 +138,31 @@ body {
                    box-sizing: border-box;
        }
 
-       /* Cards ko shrink hone ki permission dein */
        .card {
-           flex: 1 1 180px;  /* '1 1' ka matlab hai cards chote ho sakte hain fit hone ke liye */
-           max-width: 220px; /* Max size thoda kam kiya hai */
+           flex: 1 1 180px;
+           max-width: 220px;
            padding: 15px 10px;
-           font-size: 14px;  /* Font thoda chota taaki text wrap na ho */
+           font-size: 14px;
        }
 
-       /* Images ko thoda aur chota karein */
        .card-img {
            width: 100px;
            height: 100px;
            margin-bottom: 10px;
        }
        .card:hover {
-               transform: translateY(-15px) !important; /* 15px upar push karega */
-               box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Shadow gehri ho jayegi */
-               z-index: 10; /* Card upar dikhega */
+               transform: translateY(-15px) !important;
+               box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+               z-index: 10;
            }
-
-           /* 2. Snake Layout Logic (Laptop Only) */
            .card:nth-child(even) {
-               margin-top: 60px; /* Even cards ko thoda niche rakhega */
+               margin-top: 60px;
            }
 
            .card:nth-child(odd) {
-               margin-top: -60px; /* Odd cards ko thoda upar rakhega */
+               margin-top: -60px;
            }
-
-           /* Important: Hover par snake layout ki position disturb na ho */
            .card:nth-child(even):hover {
                transform: translateY(45px) scale(1.05) !important;
-               /* Agar card pehle se niche hai, toh wahi se thoda upar aur bada dikhega */
            }
 }
