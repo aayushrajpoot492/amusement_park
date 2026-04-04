@@ -1,6 +1,5 @@
 package com.example.ThrillZone.Park;
 
-import com.example.ThrillZone.Park.LOGIN.login;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

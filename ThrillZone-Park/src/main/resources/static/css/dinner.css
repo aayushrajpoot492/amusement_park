@@ -109,7 +109,6 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* Isse card ki height baki cards ke barabar ho jayegi */
     height: auto;
     min-height: 380px; /* Apne cards ki height ke hisaab se adjust karein */
 }
