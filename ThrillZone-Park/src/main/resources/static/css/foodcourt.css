@@ -99,7 +99,7 @@
         }
         .food-container {
           display: flex;
-          flex-direction: row; /* Laptop par horizontal rahega */
+          flex-direction: row;
           justify-content: space-around;
           gap: 10px;
           padding: 20px;
@@ -107,7 +107,7 @@
         }
         .category-card {
           flex: 1;
-          background: #FDF9F0; /* Creamish background like image */
+          background: #FDF9F0;
           border: 1px solid #ddd;
           border-radius: 20px;
           overflow: hidden;
@@ -167,7 +167,6 @@
     color: blue;
 }
 @media screen and (max-width: 768px) {
-    /* 1. Main Grid ko column mein badlein taaki Cards stack ho jayein */
     .food-grid {
         display: flex !important;
         flex-direction: column !important;
@@ -184,35 +183,28 @@
         flex-direction: column !important;
         gap: 10px !important;
     }
-
                #sidePage {
                    width: 0;
-                   max-width: 75vw !important; /* Mobile par sirf 75% screen lega */
+                   max-width: 75vw !important;
                    right: 0 !important;
                    background: white;
-                   overflow-x: hidden !important; /* Side scroll band karne ke liye */
+                   overflow-x: hidden !important;
                }
-
-               /* 2. Content ko container ke andar fit karein */
                .drawer-content {
                    padding: 15px !important;
-                   width: 100% !important; /* Force content to stay inside */
+                   width: 100% !important;
                    display: flex;
                    flex-direction: column;
                    align-items: center;
-                   box-sizing: border-box; /* Padding ko width ke andar rakhne ke liye */
+                   box-sizing: border-box;
                }
-
-               /* 3. Image ka size fix karein */
                .drawer-content img {
-                   width: 100% !important; /* Drawer se bahar nahi jayegi */
+                   width: 100% !important;
                    height: auto !important;
                    max-height: 180px;
                    object-fit: cover;
                    border-radius: 12px;
                }
-
-               /* 4. Text aur Price ko chota karein */
                .drawer-content h2 {
                    font-size: 1.2rem !important;
                    margin-top: 10px;

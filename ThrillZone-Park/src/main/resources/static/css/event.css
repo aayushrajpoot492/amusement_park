@@ -34,7 +34,6 @@ height:80vh;
 .event-container {
    display: grid;
     grid-template-columns: repeat(5, auto);
-    /* Gap ko thoda kam rakhein taaki "+ card" pass aa jaye */
     justify-content: end;
     gap: 15px;
     padding: 20px;
@@ -42,25 +41,21 @@ height:80vh;
     width: 100%;
     flex-wrap: wrap;
 }
-
 .event-card {
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft Shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: center;
 }
-
 .event-card:hover {
-    transform: translateY(-10px); /* Hover par thoda upar uthega */
+    transform: translateY(-10px);
 }
-
-/* Image Section (Half Card) */
 .card-image {
     width: 100%;
     height: 180px;
-    background: #f0f0f0; /* Image load hone tak placeholder */
+    background: #f0f0f0;
 }
 
 .card-image img {
@@ -68,8 +63,6 @@ height:80vh;
     height: 100%;
     object-fit: cover;
 }
-
-/* Text and Button Section */
 .card-content {
     padding: 20px;
 }
@@ -86,8 +79,6 @@ height:80vh;
     height: 60px;
     overflow: hidden;
 }
-
-/* Add Card ki special styling */
 .add-card-container {
    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
     border: 2px dashed #00ffd5;
@@ -101,7 +92,7 @@ height:80vh;
 
 .add-card-container:hover {
     background: #e0fff9;
-    transform: translateY(-10px); /* Hover effect */
+    transform: translateY(-10px);
     border-style: solid;
     transition: 0.3s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -119,9 +110,8 @@ height:80vh;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* Isse card ki height baki cards ke barabar ho jayegi */
     height: auto;
-    min-height: 380px; /* Apne cards ki height ke hisaab se adjust karein */
+    min-height: 380px;
 }
 .see-more-text {
     color: blue;
@@ -148,47 +138,34 @@ height:80vh;
 .view-btn:hover {
     background: maroon;
 }
-
-/* --- Mobile Screen (768px and below) --- */
 @media screen and (max-width: 768px) {
-
-    /* 1. Container ko vertical line mein lane ke liye */
     .event-container {
         display: flex !important;
-        flex-direction: column !important; /* Cards ek ke niche ek aayenge */
+        flex-direction: column !important;
         align-items: center !important;
         gap: 20px !important;
         padding: 15px !important;
-        overflow-x: hidden !important; /* Side scroll rokne ke liye */
+        overflow-x: hidden !important;
     }
-
-    /* 2. Card ki width aur pichakne ka issue solve karne ke liye */
     .event-card {
-        width: 90% !important; /* Mobile screen ki 90% width cover karega */
+        width: 90% !important;
         max-width: 400px !important;
-
-        /* Yeh line cards ko squeeze (pichakne) se rokegi */
         flex: none !important;
-
         margin-bottom: 10px !important;
         display: block !important;
         box-sizing: border-box;
     }
-
-    /* 3. Image height fix */
     .card-image img {
         width: 100% !important;
         height: 200px !important;
         object-fit: cover !important;
     }
-
-    /* 4. Text alignment */
     .card-content {
         text-align: center;
         padding: 15px;
     }
 }
-        .display {
+.display {
             font-family: 'Cinzel', serif;
             font-weight: 900;
             color: #333;

@@ -22,8 +22,6 @@ body {
             flex-direction: column;
             overflow-y: visible;
         }
-
-        /* Card ki basic styling */
         .card {
            flex: 0 0 220px;
             background: #fffbf2;
