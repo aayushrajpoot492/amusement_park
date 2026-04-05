@@ -34,6 +34,7 @@ height:80vh;
 .event-container {
    display: grid;
     grid-template-columns: repeat(5, auto);
+    /* Gap ko thoda kam rakhein taaki "+ card" pass aa jaye */
     justify-content: end;
     gap: 15px;
     padding: 20px;
@@ -41,21 +42,25 @@ height:80vh;
     width: 100%;
     flex-wrap: wrap;
 }
+
 .event-card {
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft Shadow */
     transition: transform 0.3s ease;
     text-align: center;
 }
+
 .event-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Hover par thoda upar uthega */
 }
+
+/* Image Section (Half Card) */
 .card-image {
     width: 100%;
     height: 180px;
-    background: #f0f0f0;
+    background: #f0f0f0; /* Image load hone tak placeholder */
 }
 
 .card-image img {
@@ -63,6 +68,8 @@ height:80vh;
     height: 100%;
     object-fit: cover;
 }
+
+/* Text and Button Section */
 .card-content {
     padding: 20px;
 }
@@ -79,6 +86,8 @@ height:80vh;
     height: 60px;
     overflow: hidden;
 }
+
+/* Add Card ki special styling */
 .add-card-container {
    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
     border: 2px dashed #00ffd5;
@@ -92,7 +101,7 @@ height:80vh;
 
 .add-card-container:hover {
     background: #e0fff9;
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Hover effect */
     border-style: solid;
     transition: 0.3s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -110,8 +119,9 @@ height:80vh;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    /* Isse card ki height baki cards ke barabar ho jayegi */
     height: auto;
-    min-height: 380px;
+    min-height: 380px; /* Apne cards ki height ke hisaab se adjust karein */
 }
 .see-more-text {
     color: blue;
@@ -165,7 +175,7 @@ height:80vh;
         padding: 15px;
     }
 }
-.display {
+        .display {
             font-family: 'Cinzel', serif;
             font-weight: 900;
             color: #333;
