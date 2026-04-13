@@ -29,17 +29,27 @@ async function verifyOtp() {
         return;
     }
 
-    const response = await fetch(`/api/auth/verify-otp?email=${email}&otp=${otp}`, { method: 'POST' });
+   try {
+           const response = await fetch(`/api/auth/verify-otp?email=${encodeURIComponent(email)}&otp=${otp}`, {
+               method: 'POST'
+           });
 
-    if (response.ok) {
-       if (mode === 'forgot') {
-            window.location.href = "/forgot-pass-form";
-       } else {
-            window.location.href = "/user/user-details";
+           if (response.ok) {
+               console.log("Current Mode:", mode);
+
+               if (mode === 'forgot') {
+                   window.location.href = "/forgot-pass-form";
+               } else {
+                   window.location.href = "/user-details";
+               }
+           } else {
+               const errorMsg = await response.text();
+               alert(errorMsg || 'Invalid OTP. Please try again.');
+           }
+       } catch (error) {
+           console.error("Error:", error);
+           alert("Verification failed. Check console.");
        }
-    } else {
-        alert('Invalid OTP. Please try again.');
-    }
 }
 const mode = localStorage.getItem('authMode') || 'signup';
 function backToEmail() {

@@ -26,10 +26,10 @@ public class AuthRestController {
     @Autowired
      EmailService emailService;
 
-     Map<String, String> otpStorage = new HashMap<>();
+    private static Map<String, String> otpStorage = new HashMap<>();
 
     @PostMapping("/send-otp")
-    public ResponseEntity<String> sendOtp(@RequestParam String email, @RequestParam(defaultValue = "signup") String mode) {
+    public ResponseEntity<String> sendOtp(@RequestParam String email, @RequestParam(defaultValue = "signup") String mode, HttpSession session) {
 
         boolean userExists = User_Repo.existsByEmail(email);
 
@@ -44,7 +44,7 @@ public class AuthRestController {
         String otp = String.valueOf(new Random().nextInt(9000) + 1000);
         otpStorage.put(email, otp);
         emailService.sendOtpEmail(email, otp);
-
+        session.setAttribute("userEmail", email);
         return ResponseEntity.ok("OTP Sent Successfully");
     }
 

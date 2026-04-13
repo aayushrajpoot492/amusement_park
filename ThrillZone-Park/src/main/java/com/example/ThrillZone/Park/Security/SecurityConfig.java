@@ -30,27 +30,27 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
 
-                        .requestMatchers("/", "/home", "/splash-screen", "/login-form", "/signup-form","/verify-otp-model").permitAll()
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/forgot-pass-form", "/reset-password").permitAll()
+                        .requestMatchers("/", "/login-form", "/signup-form").permitAll()
 
-                        .requestMatchers("/user/user-details", "/user/save-user-details").permitAll()
+
+                        .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasRole("CUSTOMER")
+                        .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
 
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login-form")
-                        .loginProcessingUrl("/login")
+                        .loginProcessingUrl("/login-submit")
                         .usernameParameter("email")
                         .defaultSuccessUrl("/home", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login-form?logout")
+                        .logoutSuccessUrl("/")
                         .permitAll()
                 );
 
