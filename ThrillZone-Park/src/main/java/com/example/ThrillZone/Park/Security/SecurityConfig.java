@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers("/", "/home", "/splash-screen", "/login-form", "/signup-form","/verify-otp-model").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/forgot-pass-form", "/reset-password").permitAll()
+                        .requestMatchers("/ParkProfile").permitAll()
 
                         .requestMatchers("/user/user-details", "/user/save-user-details").permitAll()
 
