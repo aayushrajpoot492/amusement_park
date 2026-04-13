@@ -1,4 +1,4 @@
-package com.example.ThrillZone.Park.Controllers.CustomerControllers;
+package com.example.ThrillZone.Park.Controllers.PublicControllers;
 
 import com.example.ThrillZone.Park.Master.User_Master;
 import com.example.ThrillZone.Park.Master.User_Master_Repo;
@@ -11,11 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/user")
 public class UserDetails {
     @Autowired
     User_Master_Repo User_Repo;
@@ -27,7 +25,10 @@ public class UserDetails {
     private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
     @GetMapping("/user-details")
-    public String showUserDetailForm() {
+    public String showUserDetailForm(HttpSession session) {
+        if (session.getAttribute("userEmail") == null) {
+            return "redirect:/signup-form";
+        }
         return "user-detail-form";
     }
 

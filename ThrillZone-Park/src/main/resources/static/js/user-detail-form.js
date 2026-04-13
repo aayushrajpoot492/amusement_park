@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const params = new URLSearchParams(formData);
 
             try {
-                const response = await fetch('/user/save-user-details', {
+                const response = await fetch('/save-user-details', {
                     method: 'POST',
                     body: params,
                     headers: {
