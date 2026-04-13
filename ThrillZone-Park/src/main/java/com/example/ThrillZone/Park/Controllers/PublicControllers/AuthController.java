@@ -1,5 +1,6 @@
 package com.example.ThrillZone.Park.Controllers.PublicControllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,7 +13,10 @@ public class AuthController {
     }
 
     @GetMapping("/verify-otp-model")
-    public String showOtpPage() {
+    public String showOtpPage(HttpSession session) {
+        if (session.getAttribute("userEmail") == null) {
+            return "redirect:/login-form";
+        }
         return "otp-verify";
     }
 

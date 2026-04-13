@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class InitialScreens {
 
-    @GetMapping("/splash-screen")
+    @GetMapping("/")
     public String Frontpage () {
         return "splash-screen";
     }
