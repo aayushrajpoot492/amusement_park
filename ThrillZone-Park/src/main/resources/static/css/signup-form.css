@@ -7,23 +7,25 @@
 
 body {
     min-height: 100vh;
+    width: 100%;
     background: linear-gradient(45deg, #6a11cb, #2575fc);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    padding: 20px;
 }
 
 .card {
-    width: 380px;
+    width: 100%;
+    max-width: 400px;
     background: white;
-    padding: 40px;
+    padding: 40px 30px;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-h2 { text-align: center; margin-bottom: 10px; color: #333; }
+h2 { text-align: center; margin-bottom: 10px; color: #333; font-size: 28px; }
 p { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
 
 input[type="email"] {
@@ -59,12 +61,12 @@ input[type="email"]:focus { border-color: #6a11cb; }
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(8px);
     z-index: 9999;
-
+    padding: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -73,25 +75,40 @@ input[type="email"]:focus { border-color: #6a11cb; }
     background: white;
     padding: 30px;
     border-radius: 20px;
-    width: 320px;
+    width: 100%;
+    max-width: 350px;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    margin: auto;
+    position: relative;
 }
 
 .modal-icon { font-size: 40px; margin-bottom: 10px; }
 
 .btn-primary {
+    width: 100%;
     background: #6a11cb;
     color: white;
-    padding: 10px 40px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
+    margin-top: 15px;
 }
 
 .btn-primary:hover {
     background: #2575fc;
+}
+
+@media (max-width: 400px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    h2 { font-size: 24px; }
+
+    .modal-content {
+        padding: 25px 15px;
+    }
 }

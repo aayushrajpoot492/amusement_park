@@ -1,4 +1,4 @@
-package com.example.ThrillZone.Park.Controllers.UserDetails;
+package com.example.ThrillZone.Park.Controllers.CustomerControllers;
 
 import com.example.ThrillZone.Park.Master.User_Master;
 import com.example.ThrillZone.Park.Master.User_Master_Repo;
@@ -11,9 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/user")
 public class UserDetails {
     @Autowired
     User_Master_Repo User_Repo;
@@ -21,10 +23,14 @@ public class UserDetails {
     @Autowired
     Master_Role_Repo roleRepo;
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
     @GetMapping("/user-details")
     public String showUserDetailForm() {
         return "user-detail-form";
     }
+
     @PostMapping("/save-user-details")
     public ResponseEntity<String> setUserDetails(@RequestParam String uname, @RequestParam long phoneNo,
                                                  @RequestParam String password, @RequestParam String confirmPass, HttpSession session) {
@@ -45,12 +51,11 @@ public class UserDetails {
         User_Master user = new User_Master();
         user.setM_name(uname);
         user.setPhone_no(phoneNo);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         user.setEmail(verifiedEmail);
         user.setIs_verified(true);
         Master_Role customerRole = roleRepo.findById(1L).orElseThrow(() ->
                 new RuntimeException("Default Role not found! Please add roles to DB."));
-
         user.setRole(customerRole);
         User_Repo.save(user);
 

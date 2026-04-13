@@ -18,6 +18,7 @@ function handleNavigation(event, currentIndex) {
 
 async function verifyOtp() {
     const email = localStorage.getItem('userEmail');
+    const mode = localStorage.getItem('authMode') || 'signup';
     const otpInputs = document.querySelectorAll('.otp-boxes input');
     let otp = '';
     otpInputs.forEach(input => otp += input.value.toUpperCase());
@@ -31,8 +32,16 @@ async function verifyOtp() {
     const response = await fetch(`/api/auth/verify-otp?email=${email}&otp=${otp}`, { method: 'POST' });
 
     if (response.ok) {
-        window.location.href = "/user-details";
+       if (mode === 'forgot') {
+            window.location.href = "/forgot-pass-form";
+       } else {
+            window.location.href = "/user/user-details";
+       }
     } else {
         alert('Invalid OTP. Please try again.');
     }
+}
+const mode = localStorage.getItem('authMode') || 'signup';
+function backToEmail() {
+    window.location.href = `/signup-form${mode === 'forgot' ? '?mode=forgot' : ''}`;
 }
