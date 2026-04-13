@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/parkprofile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">   </head>
+<body>
+<div>
+    <div th:replace="HomeFragments/header :: Header(true)"></div>
+    <div class="imagecontainer">
+        <img class="profileimg" src="/images/ParkProfile/parkprofile.jpg">
+
+        <div class="textoverlay">
+            <h1>Fun, laughter, and memories in every corner</h1>
+            <p>Building together a legacy of Joy and Innovation</p>
+        </div>
+    </div>
+        <div class="about-container">
+            <h1 class="about">About Us</h1>
+            <div>
+                <img class="aboutimg" src="/images/ParkProfile/aboutimg.jpg">
+                <p class="aboutdesc">Welcome to ThrillZone Park, where nature meets adventure!
+                    ThrillZone is a vibrant destination where fun and nature come together.
+                It offers a refreshing escape from the busy city life.
+                Our park is designed for families, friends, and adventure lovers.
+                From relaxing green spaces to exciting activities, there’s something for everyone.
+                ThrillZone is a place where laughter, happiness, and energy never stop.
+                Every corner of the park is filled with beauty and excitement.
+                Come and explore ThrillZone, where every moment turns into a beautiful memory.
+                    Looking for fun, adventure, and relaxation all in one place?
+                    ThrillZone Park is your go-to destination! From exciting rides
+                    and open green spaces to family-friendly activities, we bring
+                    smiles to every visitor. Come experience the joy, energy, and
+                    beauty of nature like never before.</p></div>
+
+        </div>
+
+<!--    why choose us -->
+    <section class="why-section">
+        <h2 class="why-heading">Why Choose <span>Us</span></h2>
+        <p class="why-subtext">Experience fun, adventure, and relaxation all in one place.</p>
+
+        <div class="why-grid">
+
+            <div class="why-box">
+                <div class="icon"><span>🎢</span></div>
+                <h3>Exciting Rides</h3>
+                <p>Enjoy thrilling rides for all age groups.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-tree"></i>  </div>
+                <h3>Green Environment</h3>
+                <p>Relax in peaceful natural surroundings.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-burger"></i>  </div>
+                <h3>Food Court</h3>
+                <p>Delicious food and snacks available.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-child"></i> </div>
+                <h3>Kids Zone</h3>
+                <p>Safe and fun play area for kids.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-calendar"></i> </div>
+                <h3>Events</h3>
+                <p>Enjoy exciting events and celebrations.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-shield-halved"></i>  </div>
+                <h3>Safety</h3>
+                <p>Well-trained staff and secure environment.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-indian-rupee-sign"></i> </div>
+                <h3>Affordable</h3>
+                <p>Budget-friendly pricing for everyone.</p>
+            </div>
+
+            <div class="why-box">
+                <div class="icon"><i class="fa-solid fa-car"></i>  </div>
+                <h3>Easy Access</h3>
+                <p>Convenient location with parking facility.</p>
+            </div>
+
+        </div>
+    </section>
+<!--history-->
+    <h1 class="history">Rich History of <span>THRILLZONE</span></h1>
+    <div class="history-slider">
+
+<!--<div>-->
+<!--        <button class="arrow left" onclick="prevSlide()">-->
+<!--            <i class="fa-solid fa-chevron-left"></i>-->
+<!--        </button>-->
+<!--    </div>-->
+        <div class="history-container">
+
+            <div class="history-image">
+                <div>
+                    <button class="arrow left" onclick="prevSlide()">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                </div>
+               <div>
+                   <img id="historyImg"  th:src="@{/images/ParkProfile/history/parkview.jpg}">
+               <div>
+                   <button class="arrow right" onclick="nextSlide()">
+                       <i class="fa-solid fa-chevron-right"></i>
+                   </button>
+               </div>
+               </div>
+            </div>
+
+            <div class="history-content">
+                <h2 id="historyYear">2010</h2>
+                <p id="historyText">Park started as a small green garden.<br>It was a peaceful place surrounded by trees and nature.
+                    Families visited for relaxation and fresh air.
+                    Children enjoyed open spaces and simple activities.
+                    It became a local favorite spot for evening walks.
+                    The foundation of a bigger vision began here.
+                </p>
+            </div>
+
+        </div>
+
+
+    </div>
+<!--slider-->
+
+    <div class="slider">
+        <h1 class="gallery-title">Explore Our Park </h1>
+        <p class="gallery-sub">Moments of fun, nature & adventure</p>
+        <div class="slides" id="slideTrack">
+            <img th:src="@{/images/ParkProfile/slider/foodcourt.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/nightview.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/swimmingpool.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/roadview.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/park.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/parkview.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/foodcourt.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/nightview.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/swimmingpool.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/roadview.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/park.jpg}">
+            <img th:src="@{/images/ParkProfile/slider/parkview.jpg}">
+        </div>
+    </div>
+
+<!--    map-->
+    <div class="map-section">
+        <h1 class="location"> Location</h1>
+
+        <div class="contact-section">
+
+            <div class="left-side">
+                <h2>Find Us</h2>
+
+                <iframe
+                        src="https://www.google.com/maps?q=Lalai+Tori+Jhansi&output=embed"
+                        width="100%"
+                        height="250"
+                        style="border:0;"
+                        loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="right-side">
+                <h2>Address Information</h2>
+                   <p><strong>ThrillZone Park</strong></p>
+                           <p><i class="fa-solid fa-location-dot"></i> Lalai Tori, Jhansi, UP</p>
+                           <p> <i class="fa-solid fa-phone"></i> Contact: +91 9876543210</p>
+                           <p><i class="fa-solid fa-clock"></i>Open: 10:00 AM – 8:00 PM</p>
+                                    <a href="https://www.google.com/maps/dir/?api=1&destination=Your+Location" target="_blank" class="direction-btn">
+                                        Get Directions
+                                    </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script th:src="@{/js/park-profile.js}"></script>
+</body>
+</html>

@@ -13,12 +13,28 @@
     </div>
 
     <nav class="nav" th:if="${isLoggedIn}">
-        <a href="#">Rides</a>
-        <a href="#">Events</a>
-        <a href="#">Food Court</a>
-        <a href="#">Park Profile</a>
-    </nav>
 
+        <a href="#"
+           th:classappend="${activePage == 'rides'} ? 'active'">
+            Rides
+        </a>
+
+        <a href="/#"
+           th:classappend="${activePage == 'event'} ? 'active'">
+            Events
+        </a>
+
+        <a href="#"
+           th:classappend="${activePage == 'food'} ? 'active'">
+            Food Court
+        </a>
+
+        <a href="/ParkProfile"
+           th:classappend="${activePage == 'ParkProfile'} ? 'active'">
+            Park Profile
+        </a>
+
+    </nav>
     <div class="right-section">
 
         <button class="logout" th:if="${isLoggedIn}" onclick="logout()">
