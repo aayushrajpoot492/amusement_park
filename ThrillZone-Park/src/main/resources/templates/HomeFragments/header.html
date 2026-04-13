@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=".www.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="header">
-
-    <!-- Logo -->
+<header class="header" th:fragment="Header(isLoggedIn)">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
     <div class="logo-container">
-        <img class="logoimg" src="/images/ParkProfile/headerlogo.png">
+        <img class="logoimg" src="/images/Logo/logo.png">
     </div>
 
-    <!-- Show ONLY if user logged in -->
     <nav class="nav" th:if="${isLoggedIn}">
         <a href="#">Rides</a>
         <a href="#">Events</a>
@@ -22,18 +19,15 @@
         <a href="#">Park Profile</a>
     </nav>
 
-    <!-- Right Section -->
     <div class="right-section">
 
-        <!-- If logged in -->
         <button class="logout" th:if="${isLoggedIn}" onclick="logout()">
             Logout
         </button>
 
-        <!-- If NOT logged in -->
         <div th:if="${!isLoggedIn}" class="notlogin">
             <button class="login" onclick="window.location.href='/login-form' ">Login</button>
-           <button class="signup" onclick="window.location.href='/signup-form'">Signup</button>
+            <button class="signup" onclick="window.location.href='/signup-form'">Signup</button>
         </div>
 
     </div>

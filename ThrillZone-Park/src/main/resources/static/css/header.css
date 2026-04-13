@@ -4,13 +4,19 @@ a {
 }
 .header{
    display: flex;
+<<<<<<< HEAD
    height:60px;
    margin-top:10px;
    margin-bottom: -50px;
+=======
+   height:50px;
+   margin-top:10px;
+>>>>>>> e9486e2ab814edf897603722a901a5465b404185
     justify-content: space-between;
     align-items: center;
     padding:5px;
     background:white;
+<<<<<<< HEAD
     border:2px solid black;
 box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
     }
@@ -19,15 +25,28 @@ box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
      height:110px;
      width:120px;
      margin-left:0px;
+=======
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    }
+
+     .logoimg {
+       width: 120px;
+        height: 100px;
+        margin-bottom:10px;
+>>>>>>> e9486e2ab814edf897603722a901a5465b404185
      }
      .logo-container {
         display: flex;
         align-items: center;
 
     }
+<<<<<<< HEAD
         /* NAV */
 
         .nav{
+=======
+      .nav{
+>>>>>>> e9486e2ab814edf897603722a901a5465b404185
         display: flex;
         align-items: center;
         justify-content: flex-end;

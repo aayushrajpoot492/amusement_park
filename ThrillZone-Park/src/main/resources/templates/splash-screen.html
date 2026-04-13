@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//wwww.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>ThrillZone</title>
+    <link rel="stylesheet" href="/css/splash-screen.css">
+
+</head>
+<body>
+
+<div th:replace="HomeFragments/header :: Header(false)"></div>
+
+<div class="video-container">
+    <video autoplay muted loop>
+        <source src="/images/SplashScreen/SplashVideo.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+
+    <div class="video-text">
+        <h1>Welcome to ThrillZone</h1>
+        <p>Experience the ultimate fun & adventure</p>
+    </div>
+</div>
+
+</body>
+</html>

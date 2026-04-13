@@ -1,0 +1,20 @@
+.rainbow-text {
+     margin-top: 40px;
+     font-family: 'Arial', sans-serif;
+     margin-bottom: -50px;
+     text-align: center;
+     font-size: 3rem;
+     font-weight: 800;
+     line-height: 1.2;
+     background: linear-gradient(
+                45deg,
+                #205374,
+                #27A09E,
+                #7DE393,
+                #D3F5CE
+            );
+     -webkit-background-clip: text;
+     background-clip: text;
+     color: transparent;
+     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
