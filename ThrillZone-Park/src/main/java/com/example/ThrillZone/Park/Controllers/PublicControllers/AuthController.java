@@ -1,4 +1,4 @@
-package com.example.ThrillZone.Park.Controllers.UserAuth;
+package com.example.ThrillZone.Park.Controllers.PublicControllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +20,5 @@ public class AuthController {
     public String Login (){
         return "login-form";
     }
-    @GetMapping("/forgot-pass-form")
-    public String forgotPass(){
-        return "forgot-password";
-    }
+
 }

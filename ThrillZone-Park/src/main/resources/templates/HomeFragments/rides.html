@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//wwww.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="Rides">
+    <link rel="stylesheet" th:href="@{/css/home-rides.css}">
+
+    <div class="container">
+
+    <div class="see-more-box">
+        <h1 class="display">Our Innovative Rides</h1>
+        <div class="see-more-text">See More</div>
+    </div>
+
+
+    <div class="rides-container">
+
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="/images/Rides/R1ThunderBolt.jpeg" alt="Thunder Bolt">
+            </div>
+            <div class="card-content">
+                <h3>Thunder Bolt</h3>
+                <p>Experience high-speed drops and gravity-defying loops on our fastest coaster.</p>
+                <button class="view-btn">View Details</button>
+            </div>
+        </div>
+
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="/images/Rides/R2SkyHigh.jpeg"  alt="Sky High">
+            </div>
+            <div class="card-content">
+                <h3>Sky High</h3>
+                <p>Get a bird's eye view of the entire park with our giant Ferris wheel.</p>
+                <button class="view-btn">View Details</button>
+            </div>
+        </div>
+
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="/images/Rides/R3AquaSplash.jpg" alt="Aqua Splash">
+            </div>
+            <div class="card-content">
+                <h3>Aqua Splash</h3>
+                <p>Make a splash in our massive water park featuring 20+ thrilling slides.</p>
+                <button class="view-btn">View Details</button>
+            </div>
+        </div>
+
+        <div class="ride-card">
+            <div class="card-image">
+                <img src="/images/Rides/R4RollerCoaster.jpeg" alt="Magic Carousel">
+            </div>
+            <div class="card-content">
+                <h3>Roller Coaster</h3>
+                <p>A classic family favorite with beautifully handcrafted horses and music.</p>
+                <button class="view-btn">View Details</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</body>
+</html>

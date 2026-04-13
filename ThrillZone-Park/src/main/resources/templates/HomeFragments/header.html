@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header" th:fragment="Header(isLoggedIn)">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <div class="logo-container">
+        <img class="logoimg" src="/images/Logo/logo.png">
+    </div>
+
+    <nav class="nav" th:if="${isLoggedIn}">
+        <a href="#">Rides</a>
+        <a href="#">Events</a>
+        <a href="#">Food Court</a>
+        <a href="#">Park Profile</a>
+    </nav>
+
+    <div class="right-section">
+
+        <button class="logout" th:if="${isLoggedIn}" onclick="logout()">
+            Logout
+        </button>
+
+        <div th:if="${!isLoggedIn}" class="notlogin">
+            <button class="login" onclick="window.location.href='/login-form' ">Login</button>
+            <button class="signup" onclick="window.location.href='/signup-form'">Signup</button>
+        </div>
+
+    </div>
+
+</header>
+</body>
+</html>

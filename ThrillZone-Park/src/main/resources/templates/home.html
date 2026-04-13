@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//wwww.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <div>
+        <div th:replace="HomeFragments/header :: Header(true)"></div>
+        <h1 class="rainbow-text">Experience the Thrill <br>at Adventure World</h1>
+        <div th:replace="HomeFragments/rides :: Rides"></div>
+    </div>
+</body>
+</html>

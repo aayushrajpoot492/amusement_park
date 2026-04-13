@@ -1,4 +1,4 @@
-package com.example.ThrillZone.Park.Controllers.UserAuth;
+package com.example.ThrillZone.Park.Controllers.PublicControllers;
 
 
 import com.example.ThrillZone.Park.Master.User_Master_Repo;
@@ -29,15 +29,25 @@ public class AuthRestController {
      Map<String, String> otpStorage = new HashMap<>();
 
     @PostMapping("/send-otp")
-    public ResponseEntity<String> sendOtp(@RequestParam String email) {
-        if (User_Repo.existsByEmail(email)) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email is already registered!");
+    public ResponseEntity<String> sendOtp(@RequestParam String email, @RequestParam(defaultValue = "signup") String mode) {
+
+        boolean userExists = User_Repo.existsByEmail(email);
+
+        if (mode.equals("signup") && userExists) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already registered!");
         }
+
+        if (mode.equals("forgot") && !userExists) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email not found!");
+        }
+
         String otp = String.valueOf(new Random().nextInt(9000) + 1000);
         otpStorage.put(email, otp);
         emailService.sendOtpEmail(email, otp);
+
         return ResponseEntity.ok("OTP Sent Successfully");
     }
+
 
     @PostMapping("/verify-otp")
     public ResponseEntity<String> verifyOtp(@RequestParam String email, @RequestParam String otp, HttpSession session) {
