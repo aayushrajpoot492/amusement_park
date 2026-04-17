@@ -11,23 +11,26 @@
 <div class="login-wrapper">
     <div class="login-container">
         <h2>LOGIN</h2>
-        <form th:action="@{/login}" method="post">
+
+        <form th:action="@{/login-submit}" method="post" id="loginForm">
             <div class="input-group">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="email" name="email" id="email" placeholder="Email Address" required>
             </div>
-
+            <span id="emailError" class="error-msg"></span>
             <div class="input-group">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Enter Password" required>
+                <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                <span class="toggle-password">👁️</span>
             </div>
+            <span id="passError" class="error-msg"></span>
 
             <div class="auth-options">
                 <a href="/signup-form?mode=forgot" class="forgot-link">Forgot Password?</a>
                 <span class="signup-text">don't have account? <a href="/signup-form">Sign Up</a></span>
             </div>
 
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" id="loginBtn" class="login-btn" disabled>Login</button>
 
             <div class="separator">
                 <span>OR</span>
@@ -40,5 +43,7 @@
         </form>
     </div>
 </div>
+
+<script src="/js/login-form.js"></script>
 </body>
 </html>

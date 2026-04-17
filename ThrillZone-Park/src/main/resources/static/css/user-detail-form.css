@@ -9,11 +9,10 @@ body {
     background: #2F4F4F;
     display: flex;
     align-items: center;
-    /* Desktop Default: Form right side mein rahega */
     justify-content: flex-end;
     min-height: 100vh;
     padding-right: 100px;
-    padding-left: 20px; /* Safe side padding */
+    padding-left: 20px;
 
     background-image: url("/images/Auth/userDetailImg.jpg");
     background-size: cover;
