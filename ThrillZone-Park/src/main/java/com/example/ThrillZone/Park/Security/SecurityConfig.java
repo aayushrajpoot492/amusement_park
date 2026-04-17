@@ -1,5 +1,6 @@
 package com.example.ThrillZone.Park.Security;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +31,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
 
-                        .requestMatchers("/", "/login-form", "/signup-form").permitAll()
+                        .requestMatchers("/","/login-form", "/signup-form").permitAll()
 
 
                         .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
@@ -45,7 +46,12 @@ public class SecurityConfig {
                         .loginPage("/login-form")
                         .loginProcessingUrl("/login-submit")
                         .usernameParameter("email")
-                        .defaultSuccessUrl("/home", true)
+                        .successHandler((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                        })
+                        .failureHandler((request, response, exception) -> {
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                        })
                         .permitAll()
                 )
                 .logout(logout -> logout
