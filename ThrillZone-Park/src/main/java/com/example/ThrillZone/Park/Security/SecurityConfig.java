@@ -3,6 +3,7 @@ package com.example.ThrillZone.Park.Security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,8 +30,11 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/user/addRideForm").permitAll()
 
-                        .requestMatchers("/", "/login-form", "/signup-form").permitAll()
+                        // ✅ POST submit
+                        .requestMatchers(HttpMethod.POST, "/user/addRide").permitAll()
+                        .requestMatchers("/","/user/ParkProfile","/login-form", "/signup-form").permitAll()
 
 
                         .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()

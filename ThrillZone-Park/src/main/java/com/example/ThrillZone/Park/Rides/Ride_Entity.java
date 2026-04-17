@@ -6,12 +6,26 @@ import jakarta.persistence.*;
 public class Ride_Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long ride_id;
+    @Column(name = "ride_id")
+    private Long ride_id;
 
-    String name,description;
-    int capacity,min_age;
-    double r_price;
-    Boolean is_available;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "capacity")
+    private int capacity;
+
+    @Column(name = "min_age")
+    private int min_age;
+
+    @Column(name = "r_price")
+    private double r_price;
+
+    @Column(name = "is_available")
+    private Boolean is_available;
     @Lob
     @Column(columnDefinition = "bytea")
     byte[] r_image;
