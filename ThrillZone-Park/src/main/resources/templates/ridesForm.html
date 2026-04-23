@@ -71,7 +71,7 @@ form button:hover {
 }
 </style></head>
 <body>
-<form th:action="@{/addRide}" method="post" enctype="multipart/form-data">
+<form th:action="@{/user/addRide}" method="post" enctype="multipart/form-data">
 
     <h1>Add Rides</h1>
 
@@ -87,6 +87,9 @@ form button:hover {
 
     <input type="file" name="r_image" required>
 
+    <label>
+    <input type="checkbox" name="is_available" >Available
+    </label>
     <button type="submit">Add Ride</button>
 
 </form>

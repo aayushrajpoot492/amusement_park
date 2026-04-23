@@ -26,14 +26,13 @@ public class Ride_Entity {
 
     @Column(name = "is_available")
     private Boolean is_available;
-    @Lob
-    @Column(columnDefinition = "bytea")
-    byte[] r_image;
+    @Column(name = "r_image")
+    private String r_image;
 
     public Ride_Entity() {
     }
 
-    public Ride_Entity(Long ride_id, String name, String description, int capacity, int min_age, double r_price, Boolean is_available, byte[] r_image) {
+    public Ride_Entity(Long ride_id, String name, String description, int capacity, int min_age, double r_price, Boolean is_available, String r_image) {
         this.ride_id = ride_id;
         this.name = name;
         this.description = description;
@@ -100,11 +99,11 @@ public class Ride_Entity {
         this.r_price = r_price;
     }
 
-    public byte[] getR_image() {
+    public String getR_image() {
         return r_image;
     }
 
-    public void setR_image(byte[] r_image) {
+    public void setR_image(String r_image) {
         this.r_image = r_image;
     }
 

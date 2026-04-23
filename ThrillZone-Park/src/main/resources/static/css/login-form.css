@@ -39,11 +39,6 @@ body {
     letter-spacing: 2px;
     color: #222;
 }
-
-.input-group {
-    margin-bottom: 18px;
-}
-
 .input-group label {
     display: block;
     margin-bottom: 8px;
@@ -60,12 +55,37 @@ body {
     outline: none;
     transition: 0.3s ease;
 }
-
-.input-group input:focus {
-    border-color: #e9458d;
-    box-shadow: 0 0 8px rgba(233, 69, 141, 0.2);
+.input-group {
+    position: relative;
+    margin-bottom: 5px;
 }
 
+.input-group input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border-radius: 10px;
+    border: 1.5px solid #ddd;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+    z-index: 10;
+    user-select: none;
+}
+.input-error {
+    border: 1.5px solid #d9534f !important;
+}
+.input-error, .input-error:focus {
+    border: 1.5px solid #d9534f !important;
+}
 .auth-options {
     display: flex;
     justify-content: space-between;
@@ -73,24 +93,20 @@ body {
     margin-bottom: 25px;
     font-size: 13px;
 }
-
 .forgot-link {
     color: #4b7bec;
     text-decoration: none;
     font-weight: 500;
 }
-
 .signup-text {
     color: #666;
 }
-
 .signup-text a {
     color: #4b7bec;
     text-decoration: none;
     font-weight: 600;
     margin-left: 4px;
 }
-
 .forgot-link:hover, .signup-text a:hover {
     text-decoration: underline;
 }
@@ -111,7 +127,6 @@ body {
 .login-btn:hover {
     background-color: #d6337a;
 }
-
 .separator {
     text-align: center;
     margin: 20px 0;
@@ -154,6 +169,29 @@ body {
 .google-btn img {
     width: 18px;
     margin-right: 10px;
+}
+.login-btn:disabled {
+    background-color: #a0b1b1;
+    cursor: not-allowed;
+}
+.error-msg {
+    color: #d9534f;
+    font-size: 12px;
+    display: block;
+    min-height: 15px;
+    font-weight: 500;
+}
+.input-group {
+    margin-bottom: 5px;
+}
+
+.error-msg {
+    color: #d9534f;
+    font-size: 11px;
+    display: block;
+    min-height: 18px;
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
 

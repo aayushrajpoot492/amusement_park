@@ -1,9 +1,9 @@
 package com.example.ThrillZone.Park.Security;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,27 +29,29 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/user/addRideForm").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**","/uploads/**").permitAll()
 
-                        // ✅ POST submit
-                        .requestMatchers(HttpMethod.POST, "/user/addRide").permitAll()
-                        .requestMatchers("/","/user/ParkProfile","/login-form", "/signup-form").permitAll()
+                        .requestMatchers("/","/login-form", "/signup-form").permitAll()
 
 
-                        .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
+                        .requestMatchers("/user/ParkProfile","/user/addRideForm","/user/addRide","/user/rides","/user/BookingForm","/user/addFoodForm","/user/addFood","/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
-
+                      .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
+//                                .requestMatchers("/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login-form")
                         .loginProcessingUrl("/login-submit")
                         .usernameParameter("email")
-                        .defaultSuccessUrl("/home", true)
+                        .successHandler((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                        })
+                        .failureHandler((request, response, exception) -> {
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                        })
                         .permitAll()
                 )
                 .logout(logout -> logout

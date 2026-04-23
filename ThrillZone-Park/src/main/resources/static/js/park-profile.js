@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!slides) return;
 
     let scrollAmount = 0;
-    let speed = 100; // 👈 pixels per second (increase for speed)
+    let speed = 100;
 
     let isPaused = false;
     let lastTime = 0;
