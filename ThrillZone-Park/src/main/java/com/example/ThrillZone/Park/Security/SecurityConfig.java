@@ -29,17 +29,17 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**","/uploads/**").permitAll()
 
                         .requestMatchers("/","/login-form", "/signup-form").permitAll()
 
 
-                        .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
+                        .requestMatchers("/user/ParkProfile","/user/addRideForm","/user/addRide","/user/rides","/user/BookingForm","/user/addFoodForm","/user/addFood","/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
-
+                      .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
+//                                .requestMatchers("/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

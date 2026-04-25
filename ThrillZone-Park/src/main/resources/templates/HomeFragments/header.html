@@ -14,7 +14,7 @@
 
     <nav class="nav" th:if="${isLoggedIn}">
 
-        <a href="#"
+        <a href="/user/rides"
            th:classappend="${activePage == 'rides'} ? 'active'">
             Rides
         </a>
@@ -24,12 +24,12 @@
             Events
         </a>
 
-        <a href="#"
+        <a href="/user/foodCourtForm"
            th:classappend="${activePage == 'food'} ? 'active'">
             Food Court
         </a>
 
-        <a href="/ParkProfile"
+        <a href="/user/ParkProfile"
            th:classappend="${activePage == 'ParkProfile'} ? 'active'">
             Park Profile
         </a>

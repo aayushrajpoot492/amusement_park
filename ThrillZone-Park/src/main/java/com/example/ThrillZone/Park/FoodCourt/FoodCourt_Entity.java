@@ -11,14 +11,13 @@ public class FoodCourt_Entity {
     String f_name,category,food_desc;
     double f_price;
     Boolean is_available;
-    @Lob
-    @Column(columnDefinition = "bytea")
-     byte[] f_image;
+    @Column(name = "f_image")
+    private String f_image;
 
     public FoodCourt_Entity() {
     }
 
-    public FoodCourt_Entity(Long food_id, String f_name, String category, String food_desc, double f_price, Boolean is_available, byte[] f_image) {
+    public FoodCourt_Entity(Long food_id, String f_name, String category, String food_desc, double f_price, Boolean is_available, String f_image) {
         this.food_id = food_id;
         this.f_name = f_name;
         this.category = category;
@@ -76,11 +75,11 @@ public class FoodCourt_Entity {
         this.is_available = is_available;
     }
 
-    public byte[] getF_image() {
+    public String getF_image() {
         return f_image;
     }
 
-    public void setF_image(byte[] f_image) {
+    public void setF_image(String f_image) {
         this.f_image = f_image;
     }
 }

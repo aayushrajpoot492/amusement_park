@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Form</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #9face6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.booking-container {
+    background: white;
+    padding: 30px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #6c63ff;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #574bdb;
+}
+    </style>
+</head>
+<body>
+
+<div class="booking-container">
+    <h2>Book Your Ride </h2>
+
+    <form th:action="@{/user/bookRide}"  method="post">
+
+        <input type="text" name="name" placeholder="Enter Your Name" required>
+
+        <label>Select Date</label>
+        <input type="date" name="date" required>
+
+        <!-- Time Slot -->
+        <label>Select Time Slot</label>
+        <select name="timeSlot" required>
+            <option value="">-- Choose Time Slot --</option>
+            <option value="10-12">10:00 AM - 12:00 PM</option>
+            <option value="12-2">12:00 PM - 02:00 PM</option>
+            <option value="2-4">02:00 PM - 04:00 PM</option>
+            <option value="4-6">04:00 PM - 06:00 PM</option>
+            <option value="6-8">06:00 PM - 08:00 PM</option>
+        </select>
+
+        <input type="hidden" id="price" th:value="${param.price}">
+
+        <input type="number" id="tickets" name="tickets" placeholder="No. of Tickets" min="1" required>
+
+        <p>Total Amount: ₹ <span id="total">0</span></p>
+
+        <button type="submit">Book Now</button>
+
+    </form>
+<!--    <script>-->
+<!--        let ticketsInput = document.getElementById("tickets");-->
+<!--        let price = document.getElementById("price").value;-->
+<!--        let total = document.getElementById("total");-->
+
+<!--        ticketsInput.addEventListener("input", function () {-->
+<!--            let tickets = ticketsInput.value;-->
+
+<!--            if (tickets > 0) {-->
+<!--                total.innerText = tickets * price;-->
+<!--            } else {-->
+<!--                total.innerText = 0;-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
+    <script>
+        let ticketsInput = document.getElementById("tickets");
+        let priceInput = document.getElementById("price");
+        let total = document.getElementById("total");
+
+        console.log("ticketsInput:", ticketsInput);
+        console.log("price:", priceInput.value);
+
+        ticketsInput.addEventListener("input", function () {
+            let tickets = parseInt(ticketsInput.value);
+            let price = parseInt(priceInput.value);
+
+            console.log("tickets:", tickets, "price:", price);
+
+            if (tickets > 0 && price > 0) {
+                total.innerText = tickets * price;
+            } else {
+                total.innerText = 0;
+            }
+        });
+    </script>
+</div>
+
+</body>
+</html>
