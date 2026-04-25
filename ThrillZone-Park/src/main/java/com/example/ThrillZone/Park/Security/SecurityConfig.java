@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("/","/login-form", "/signup-form").permitAll()
 
 
-                        .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
+                        .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details","/user/addEvent").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
