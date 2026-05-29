@@ -3,128 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <title>Booking Form</title>
-    <link rel="stylesheet" href="style.css">
+
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #9face6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.booking-container {
-    background: white;
-    padding: 30px;
-    width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+        .booking-container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-}
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
 
-input:focus, select:focus {
-    border-color: #6c63ff;
-}
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #6c63ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #574bdb;
-}
+        button:hover {
+            background: #574bdb;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="booking-container">
-    <h2>Book Your Ride </h2>
 
-    <form th:action="@{/user/bookRide}"  method="post">
+    <h2>Book Your Ride</h2>
 
-        <input type="text" name="name" placeholder="Enter Your Name" required>
+    <form th:action="@{/user/bookRide}" method="post">
 
+        <!-- Ride Name -->
+        <input type="text"
+               name="ride_name"
+               th:value="${booking.ride_name}"
+               readonly>
+
+        <!-- Customer Name -->
+        <input type="text"
+               name="customer_name"
+               placeholder="Customer Name"
+               th:value="${booking != null ? booking.customer_name : ''}"
+               required>
+
+        <!-- Phone -->
+        <input type="text"
+               name="customer_phone"
+               placeholder="Phone Number"
+               th:value="${booking != null ? booking.customer_phone : ''}"
+               required>
+
+        <!-- Date -->
         <label>Select Date</label>
-        <input type="date" name="date" required>
 
-        <!-- Time Slot -->
+        <input type="date"
+               name="booking_date"
+               th:value="${booking != null ? booking.booking_date : ''}"
+               required>
+
+        <!-- Time -->
         <label>Select Time Slot</label>
-        <select name="timeSlot" required>
+
+        <select name="booking_time" required>
+
             <option value="">-- Choose Time Slot --</option>
-            <option value="10-12">10:00 AM - 12:00 PM</option>
-            <option value="12-2">12:00 PM - 02:00 PM</option>
-            <option value="2-4">02:00 PM - 04:00 PM</option>
-            <option value="4-6">04:00 PM - 06:00 PM</option>
-            <option value="6-8">06:00 PM - 08:00 PM</option>
+
+            <option value="10:00"
+                    th:selected="${booking != null
+                    && booking.booking_time != null
+                    && booking.booking_time.toString() == '10:00'}">
+                10:00 AM
+            </option>
+
+            <option value="12:00"
+                    th:selected="${booking != null
+                    && booking.booking_time != null
+                    && booking.booking_time.toString() == '12:00'}">
+                12:00 PM
+            </option>
+
+            <option value="14:00"
+                    th:selected="${booking != null
+                    && booking.booking_time != null
+                    && booking.booking_time.toString() == '14:00'}">
+                02:00 PM
+            </option>
+
+            <option value="16:00"
+                    th:selected="${booking != null
+                    && booking.booking_time != null
+                    && booking.booking_time.toString() == '16:00'}">
+                04:00 PM
+            </option>
+
+            <option value="18:00"
+                    th:selected="${booking != null
+                    && booking.booking_time != null
+                    && booking.booking_time.toString() == '18:00'}">
+                06:00 PM
+            </option>
+
         </select>
 
-        <input type="hidden" id="price" th:value="${param.price}">
+        <!-- Hidden Price -->
+        <input type="hidden"
+               id="price"
+               name="total_amount"
+               th:value="${booking.total_amount}">
 
-        <input type="number" id="tickets" name="tickets" placeholder="No. of Tickets" min="1" required>
 
-        <p>Total Amount: ₹ <span id="total">0</span></p>
+        <!-- Tickets -->
+        <input type="number"
+               id="tickets"
+               name="total_tickets"
+               placeholder="No. of Tickets"
+               min="1"
+               th:value="${booking != null
+               ? booking.total_tickets
+               : ''}"
+               required>
 
-        <button type="submit">Book Now</button>
+        <!-- Total -->
+        <p>
+            Total Amount:
+            ₹ <span id="total">0</span>
+        </p>
+
+        <button type="submit">
+            Proceed
+        </button>
 
     </form>
-<!--    <script>-->
-<!--        let ticketsInput = document.getElementById("tickets");-->
-<!--        let price = document.getElementById("price").value;-->
-<!--        let total = document.getElementById("total");-->
 
-<!--        ticketsInput.addEventListener("input", function () {-->
-<!--            let tickets = ticketsInput.value;-->
-
-<!--            if (tickets > 0) {-->
-<!--                total.innerText = tickets * price;-->
-<!--            } else {-->
-<!--                total.innerText = 0;-->
-<!--            }-->
-<!--        });-->
-<!--    </script>-->
-    <script>
-        let ticketsInput = document.getElementById("tickets");
-        let priceInput = document.getElementById("price");
-        let total = document.getElementById("total");
-
-        console.log("ticketsInput:", ticketsInput);
-        console.log("price:", priceInput.value);
-
-        ticketsInput.addEventListener("input", function () {
-            let tickets = parseInt(ticketsInput.value);
-            let price = parseInt(priceInput.value);
-
-            console.log("tickets:", tickets, "price:", price);
-
-            if (tickets > 0 && price > 0) {
-                total.innerText = tickets * price;
-            } else {
-                total.innerText = 0;
-            }
-        });
-    </script>
 </div>
+
+<script>
+
+    let ticketsInput = document.getElementById("tickets");
+    let priceInput = document.getElementById("price");
+    let total = document.getElementById("total");
+
+    function calculateTotal() {
+
+        let tickets = parseInt(ticketsInput.value);
+        let price = parseInt(priceInput.value);
+
+        if (tickets > 0 && price > 0) {
+            total.innerText = tickets * price;
+        }
+        else {
+            total.innerText = 0;
+        }
+    }
+
+    ticketsInput.addEventListener("input", calculateTotal);
+
+    window.onload = calculateTotal;
+
+</script>
 
 </body>
 </html>
