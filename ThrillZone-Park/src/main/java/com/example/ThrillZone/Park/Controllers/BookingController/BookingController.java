@@ -143,7 +143,6 @@ public class BookingController {
             Booking_Entity booking,
             Model model
     ) {
-
         model.addAttribute("booking", booking);
 
         return "paymentPage";
