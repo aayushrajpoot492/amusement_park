@@ -57,16 +57,16 @@
                 object-fit: cover;
             }
 
-            .ride-content {
+            .food-content {
                 padding: 15px;
             }
 
-            .ride-content h2 {
+            .food-content h2 {
                 margin: 0;
                 color: #222;
             }
 
-            .ride-content p {
+            .food-content p {
                 color: #666;
                 margin: 8px 0;
             }
@@ -77,7 +77,7 @@
                 font-size: 18px;
             }
 
-.ride-footer {
+.food-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -160,44 +160,31 @@
         </style>
     </head>
     <body>
-    <div th:replace="~{HomeFragments/header :: Header(true)}"></div>
-    <h1>Explore all Rides !!</h1>
+    <div th:replace="HomeFragments/header :: Header(true)"></div>
+    <h1>Explore all Food !!</h1>
 
     <div class="rides-container">
 
-        <div class="ride-card" th:each="ride : ${rides}">
-            <img th:src="${ride.r_image}" alt="Ride Image" class="rideimg">
+        <div class="ride-card" th:each="food : ${foods}">
+            <img th:src="${food.f_image}" alt="food Image" class="foodimg">
 
-            <div class="ride-content">
-                <h2 th:text="${ride.name}"></h2>
-                <p th:text="${ride.description}"></p>
+            <div class="food-content">
+                <h2 th:text="${food.f_name}"></h2>
+                <p th:text="${food.desc}"></p>
 
-                <p class="price">₹ <span th:text="${ride.r_price}"></span></p>
+                <p class="price">₹ <span th:text="${food.f_price}"></span></p>
 
-                <div class="ride-footer">
+                <div class="food-footer">
 
-                    <form th:action="@{/user/BookingForm}" method="post">
-
-                        <input type="hidden"
-                               name="ride_name"
-                               th:value="${ride.name}">
-
-                        <input type="hidden"
-                               name="price"
-                               th:value="${ride.r_price}">
-
-                        <button type="submit"
-                                th:disabled="${ride.is_available == null or !ride.is_available}"
+                    <a th:href="@{/user/Order(food=${food.f_price})}">
+                        <button type="button"
+                                th:disabled="${food.is_available == null or !food.is_available}"
                                 class="ticket-btn">
-
-                            Book Ticket
-
-                        </button>
-
-                    </form>
+                            Order now
+                        </button></a>
                     <span
-                            th:text="${ride.is_available != null and ride.is_available} ? 'Available' : 'Unavailable'"
-                            th:classappend="${ride.is_available != null and ride.is_available} ? 'status available' : 'status unavailable'"                </span>
+                            th:text="${food.is_available != null and food.is_available} ? 'Available' : 'Unavailable'"
+                            th:classappend="${food.is_available != null and food.is_available} ? 'status available' : 'status unavailable'"  >              </span>
 
                 </div>
             </div>

@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("/","/login-form", "/signup-form").permitAll()
 
 
-                        .requestMatchers("/user/ParkProfile","/user/addRideForm","/user/addRide","/user/rides","/user/BookingForm","/user/addFoodForm","/user/addFood","/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
+                        .requestMatchers("/user/paymentPage","/user/ParkProfile","/user/addRideForm","/user/addRide","/user/rides","/user/BookingForm","/user/confirmBooking","/user/bookRide","/user/editBooking","/user/foodCourtForm","/user/addFood","/user/foods","/user/EventForm","/user/addEvent","/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
