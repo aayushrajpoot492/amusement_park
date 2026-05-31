@@ -1,22 +1,30 @@
+body {
+    margin: 0;
+}
 a {
     text-decoration: none;
     color: inherit;
 }
 .header{
-   display: flex;
-   height:50px;
-   margin-top:10px;
-    justify-content: space-between;
-    align-items: center;
-    padding:5px;
-    background:white;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+       display: flex;
+       height:65px;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 1000;
+       justify-content: space-between;
+       align-items: center;
+       padding: 0 30px;
+       background: white;
+       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+       box-sizing: border-box;
     }
 
      .logoimg {
        width: 120px;
-        height: 100px;
-        margin-bottom:10px;
+        height: auto;
+        max-height: 90px;
      }
      .logo-container {
         display: flex;
@@ -30,7 +38,7 @@ a {
         width: 100%;
         color:black;
         margin:0 18px;
-        font-size:20px;
+        font-size:18px;
        font-family: 'Poppins', sans-serif;
         font-weight:500;
         gap: 20px;
@@ -44,6 +52,13 @@ a {
         text-decoration: none !important;
         color: black;
         transition: color 0.3s ease;
+    }
+    .nav a.active {
+        color: blue !important;
+        font-weight: bold !important;
+    }
+        .nav a:hover {
+        color: #ff5722;
     }
     .logout{
     height:30px;

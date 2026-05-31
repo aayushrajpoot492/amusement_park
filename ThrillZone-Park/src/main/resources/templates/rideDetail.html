@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${ride.name} + ' - Details'">Ride Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/rideDetail.css">
+</head>
+<body>
+
+<div th:replace="HomeFragments/header :: Header(true)"></div>
+
+<div class="detail-page-container">
+
+    <div class="detail-card">
+
+        <div class="detail-image-section">
+            <img th:src="${ride.r_image}" alt="Ride Big Image">
+        </div>
+
+        <div class="detail-content-section">
+
+            <a th:href="@{/user/rides}" class="back-link">
+                ← Back to All Rides
+            </a>
+
+            <h1 class="ride-title" th:text="${ride.name}">Ride Name</h1>
+
+            <div class="detail-price">
+                ₹ <span th:text="${#numbers.formatDecimal(ride.r_price, 1, 0)}">0</span>
+            </div>
+
+            <p class="ride-full-desc" th:text="${ride.description}"></p>
+
+            <div class="specs-grid">
+
+                <div class="spec-box">
+                    <div class="spec-label">Min Age</div>
+                    <div class="spec-value" th:text="${ride.min_age != null} ? ${ride.min_age} + ' Yrs' : 'All Ages'">12+ Yrs</div>
+                </div>
+
+                <div class="spec-box">
+                    <div class="spec-label">Capacity</div>
+                    <div class="spec-value" th:text="${ride.capacity != null} ? ${ride.capacity} + ' Persons' : '20-30'">24 Persons</div>
+                </div>
+
+                <div class="spec-box">
+                    <div class="spec-label">Status</div>
+                    <div class="spec-value"
+                         th:text="${ride.is_available != null and ride.is_available} ? 'Active' : 'Maintenance'"
+                         th:classappend="${ride.is_available != null and ride.is_available} ? 'status-available' : 'status-unavailable'">
+                        Active
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="action-wrapper">
+                <a th:href="@{/user/BookingForm(price=${ride.r_price})}"
+                   th:styleappend="${ride.is_available == null or !ride.is_available} ? 'pointer-events: none;' : ''"
+                   class="btn-book-now">
+                    <button type="button"
+                            th:disabled="${ride.is_available == null or !ride.is_available}"
+                            style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">
+                        Confirm & Book Ticket
+                    </button>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

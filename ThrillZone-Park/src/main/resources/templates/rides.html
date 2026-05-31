@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Rides - ThrillZone</title>
+
+    <link rel="stylesheet" th:href="@{/css/rides.css}">
+</head>
+<body>
+
+<div th:replace="HomeFragments/header :: Header(true)"></div>
+
+<h1 class="rides-title">Explore all Rides !!</h1>
+
+<div class="rides-container">
+    <div class="ride-card" th:each="ride : ${rides}">
+        <img th:src="${ride.r_image}" alt="Ride Image" class="rideimg">
+
+        <div class="ride-content">
+            <h2 th:text="${ride.name}"></h2>
+            <div class="description-container">
+                <span class="truncated-text" th:text="${#strings.abbreviate(ride.description, 55)}"></span>
+                <a th:href="@{/user/rideDetails(id=${ride.ride_id})}" class="see-detail-link">See Detail</a>
+            </div>
+
+            <p class="price">₹ <span th:text="${ride.r_price}"></span></p>
+
+            <div class="ride-footer">
+                <a th:href="@{/user/BookingForm(price=${ride.r_price})}">
+                    <button type="button"
+                            th:disabled="${ride.is_available == null or !ride.is_available}"
+                            class="ticket-btn">
+                        Book Ticket
+                    </button>
+                </a>
+
+                <span th:text="${ride.is_available != null and ride.is_available} ? 'Available' : 'Unavailable'"
+                      th:classappend="${ride.is_available != null and ride.is_available} ? 'status available' : 'status unavailable'">
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{HomeFragments/footer :: site-footer}"></div>
+
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.example.ThrillZone.Park.Events;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,24 +13,24 @@ public class Event_Entity {
     Long e_id;
 
     String e_name,e_desc;
-    int age_limit;
+
     double e_price;
     boolean is_available;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate e_date;
+    @DateTimeFormat(pattern = "HH:mm")
     LocalTime e_time;
-    @Lob
-    @Column(columnDefinition = "bytea")
-    byte[] e_image;
+    @Column(name = "e_image")
+    private String e_image;
 
 
     public Event_Entity() {
     }
 
-    public Event_Entity(Long e_id, String e_name, String e_desc, int age_limit, double e_price, boolean is_available, LocalDate e_date, LocalTime e_time, byte[] e_image) {
+    public Event_Entity(Long e_id, String e_name, String e_desc,  double e_price, boolean is_available, LocalDate e_date, LocalTime e_time, String e_image) {
         this.e_id = e_id;
         this.e_name = e_name;
         this.e_desc = e_desc;
-        this.age_limit = age_limit;
         this.e_price = e_price;
         this.is_available = is_available;
         this.e_date = e_date;
@@ -60,14 +61,6 @@ public class Event_Entity {
 
     public void setE_desc(String e_desc) {
         this.e_desc = e_desc;
-    }
-
-    public int getAge_limit() {
-        return age_limit;
-    }
-
-    public void setAge_limit(int age_limit) {
-        this.age_limit = age_limit;
     }
 
     public double getE_price() {
@@ -102,12 +95,11 @@ public class Event_Entity {
         this.e_time = e_time;
     }
 
-    public byte[] getE_image() {
+    public String getE_image() {
         return e_image;
     }
 
-    public void setE_image(byte[] e_image) {
+    public void setE_image(String  e_image) {
         this.e_image = e_image;
     }
 }
-

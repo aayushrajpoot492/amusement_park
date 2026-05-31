@@ -1,0 +1,181 @@
+/* --- COMPACT CHANGES START HERE --- */
+
+.event-detail-box {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    /* Pehle 500px thi, ise 400px kar diya taaki box compact ho jaye */
+    min-height: 400px;
+    max-width: 950px; /* Box ki total width bhi thodi kam kar di premium look ke liye */
+    margin: 0 auto;
+}
+
+.detail-img-section {
+    flex: 1; /* Pehle 1.2 tha, ab 1:1 ratio kar diya taaki image square-ish aur chhoti dikhe */
+    position: relative;
+    background-color: #f1f2f6;
+}
+
+.detail-info-section {
+    flex: 1;
+    padding: 30px; /* Pehle 400px pe 40px padding thi, ab 30px kar di taaki tight aur clean dikhe */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
+}
+
+/* Baki Details ki Spacing thodi kam kar di */
+.info-header .event-main-title {
+    font-size: 1.8rem; /* Font thoda chhota kiya 2.2rem se */
+    color: #2f3542;
+    margin: 0 0 12px 0;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.event-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #f1f2f6;
+}
+
+.meta-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fa;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+.detail-desc-block {
+    margin-bottom: 20px;
+}
+
+.detail-desc-block h3 {
+    font-size: 0.95rem;
+    color: #747d8c;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-desc-text {
+    font-size: 0.95rem; /* Text size chhota kiya flat visual scale ke liye */
+    color: #57606f;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.detail-action-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f1f2f6;
+    padding: 15px 25px; /* Padding kam ki */
+    border-radius: 12px;
+    margin-top: auto;
+}
+
+/* --- COMPACT CHANGES END HERE --- */
+
+
+/* --- BAWARCHEE CODE (Baki sab same h tumhari CSS jaisa) --- */
+
+.detail-page-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.back-btn-container {
+    margin-bottom: 15px;
+}
+
+.back-link {
+    color: #57606f;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #ff4757;
+}
+
+.detail-large-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detail-status-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.status-in-stock { background-color: #2ed573; color: white; }
+.status-out-of-stock { background-color: #ff4757; color: white; }
+
+.meta-icon { font-size: 1.3rem; }
+.meta-label { display: block; font-size: 0.75rem; color: #a4b0be; text-transform: uppercase; font-weight: 600; }
+.meta-value { font-size: 0.95rem; color: #2f3542; font-weight: 700; }
+
+.price-label { font-size: 0.8rem; color: #747d8c; font-weight: 600; }
+.detail-price-tag { font-size: 1.6rem; font-weight: 800; color: #2f3542; }
+
+.detail-action-btn {
+    background: linear-gradient(135deg, #3742fa, #5352ed);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 12px rgba(55, 66, 250, 0.25);
+}
+
+.detail-action-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(55, 66, 250, 0.35);
+}
+
+.detail-action-btn:disabled {
+    background: #ced6e0;
+    color: #a4b0be;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+    .event-detail-box { flex-direction: column; min-height: auto; }
+    .detail-img-section { height: 280px; }
+    .detail-info-section { padding: 25px; }
+}
+
+@media (max-width: 480px) {
+    .event-meta-grid { grid-template-columns: 1fr; }
+    .detail-action-footer { flex-direction: column; gap: 12px; text-align: center; }
+    .detail-action-btn { width: 100%; }
+}

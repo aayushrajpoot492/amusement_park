@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThrillZone - All Events</title>
+  <link rel="stylesheet" th:href="@{/css/event.css}">
+</head>
+<body>
+
+<div th:replace="~{HomeFragments/header :: Header(true)}"></div>
+
+<h1 class="events-section-title">Explore All Park Events & Shows !!</h1>
+
+<div class="events-container">
+  <div class="event-card" th:each="event : ${events}">
+
+    <div class="event-img-container">
+      <img th:src="${event.e_image}" alt="Event Image" class="event-img">
+      <span th:text="${event.is_available != null and event.is_available} ? 'Available' : 'Sold Out'"
+            th:class="${event.is_available != null and event.is_available} ? 'status-badge status-available' : 'status-badge status-unavailable'">
+            </span>
+    </div>
+
+    <div class="event-content">
+      <h2 class="event-title" th:text="${event.e_name}">Event Name</h2>
+
+      <div class="event-schedule">
+        <div class="schedule-item">
+          <span>📅</span> <span th:text="${#temporals.format(event.e_date, 'dd MMM yyyy')}">Date</span>
+        </div>
+        <div class="schedule-item">
+          <span>🕒</span> <span th:text="${event.e_time}">Time</span>
+        </div>
+      </div>
+
+      <p class="event-desc">
+        <span th:text="${#strings.abbreviate(event.e_desc, 65)}">Description</span>
+        <a th:href="@{/user/eventDetails(id=${event.e_id})}" class="see-detail-link">Read More</a>
+      </p>
+
+      <div class="event-footer">
+        <div class="event-price">
+          ₹<span th:text="${#numbers.formatDecimal(event.e_price, 1, 0)}">0</span>
+        </div>
+        <a th:href="@{/user/bookEvent(id=${event.e_id}, price=${event.e_price})}">
+          <button type="button"
+                  th:disabled="${event.is_available == null or !event.is_available}"
+                  class="book-btn">
+            Book Tickets
+          </button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div th:replace="~{HomeFragments/footer :: site-footer}"></div>
+
+</body>
+</html>

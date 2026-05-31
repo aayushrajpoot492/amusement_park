@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function autoSlide(currentTime) {
 
         if (!lastTime) lastTime = currentTime;
-        let deltaTime = (currentTime - lastTime) / 1000; // seconds
+        let deltaTime = (currentTime - lastTime) / 1000;
         lastTime = currentTime;
 
         if (!isPaused) {
@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-/*history*/
 
 const data = [
     {

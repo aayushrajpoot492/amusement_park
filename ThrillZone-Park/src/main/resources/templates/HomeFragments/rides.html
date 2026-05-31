@@ -1,72 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https//wwww.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Fragment Template</title>
 </head>
 <body>
-<div th:fragment="Rides">
-    <link rel="stylesheet" th:href="@{/css/home-rides.css}">
 
-    <div class="container">
+<div th:fragment="Rides(ridesList)">
+    <link rel="stylesheet" th:href="@{/css/rides.css}">
 
     <div class="see-more-box">
         <h1 class="display">Our Innovative Rides</h1>
-        <div class="see-more-text">See More</div>
+        <a href="/user/rides"><div class="see-more-text">See More</div></a>
     </div>
-
 
     <div class="rides-container">
+        <div class="ride-card" th:each="ride, iterStat : ${ridesList}"  th:if="${iterStat.index <  3}">
+            <img th:src="${ride.r_image}" alt="Ride Image" class="rideimg">
 
-        <div class="ride-card">
-            <div class="card-image">
-                <img src="/images/Rides/R1ThunderBolt.jpeg" alt="Thunder Bolt">
-            </div>
-            <div class="card-content">
-                <h3>Thunder Bolt</h3>
-                <p>Experience high-speed drops and gravity-defying loops on our fastest coaster.</p>
-                <button class="view-btn">View Details</button>
+            <div class="ride-content">
+                <h2 th:text="${ride.name}"></h2>
+                <div class="description-container">
+                    <span class="truncated-text" th:text="${#strings.abbreviate(ride.description, 55)}"></span>
+                    <a th:href="@{/user/rideDetails(id=${ride.ride_id})}" class="see-detail-link">See Detail</a>
+                </div>
+
+                <p class="price">₹ <span th:text="${ride.r_price}"></span></p>
+
+                <div class="ride-footer">
+                    <a th:href="@{/user/BookingForm(price=${ride.r_price})}">
+                        <button type="button"
+                                th:disabled="${ride.is_available == null or !ride.is_available}"
+                                class="ticket-btn">
+                            Book Ticket
+                        </button>
+                    </a>
+                    <span th:text="${ride.is_available != null and ride.is_available} ? 'Available' : 'Unavailable'"
+                          th:classappend="${ride.is_available != null and ride.is_available} ? 'status available' : 'status unavailable'">
+                    </span>
+                </div>
             </div>
         </div>
-
-        <div class="ride-card">
-            <div class="card-image">
-                <img src="/images/Rides/R2SkyHigh.jpeg"  alt="Sky High">
-            </div>
-            <div class="card-content">
-                <h3>Sky High</h3>
-                <p>Get a bird's eye view of the entire park with our giant Ferris wheel.</p>
-                <button class="view-btn">View Details</button>
-            </div>
-        </div>
-
-        <div class="ride-card">
-            <div class="card-image">
-                <img src="/images/Rides/R3AquaSplash.jpg" alt="Aqua Splash">
-            </div>
-            <div class="card-content">
-                <h3>Aqua Splash</h3>
-                <p>Make a splash in our massive water park featuring 20+ thrilling slides.</p>
-                <button class="view-btn">View Details</button>
-            </div>
-        </div>
-
-        <div class="ride-card">
-            <div class="card-image">
-                <img src="/images/Rides/R4RollerCoaster.jpeg" alt="Magic Carousel">
-            </div>
-            <div class="card-content">
-                <h3>Roller Coaster</h3>
-                <p>A classic family favorite with beautifully handcrafted horses and music.</p>
-                <button class="view-btn">View Details</button>
-            </div>
-        </div>
-
     </div>
-
 </div>
 
-</div>
 </body>
 </html>
