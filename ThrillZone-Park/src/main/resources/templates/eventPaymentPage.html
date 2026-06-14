@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Payment Page</title>
+  <link rel="stylesheet" th:href="@{/css/eventPayment.css}">
+
+</head>
+<body>
+
+<h2>Event Payment Page 💳</h2>
+
+<p><b>Event Name:</b>
+  <span th:text="${event.e_name}"></span>
+</p>
+
+<p><b>Customer Name:</b>
+  <span th:text="${registration.name}"></span>
+</p>
+
+<p><b>Phone Number:</b>
+  <span th:text="${registration.phone}"></span>
+</p>
+
+<p><b>Email Address:</b>
+  <span th:text="${registration.email}"></span>
+</p>
+
+<p><b>Total Participants:</b>
+  <span th:text="${registration.participants}"></span>
+</p>
+
+<p><b>Total Amount:</b>
+  ₹ <span th:text="${registration.totalAmount}"></span>
+</p>
+
+<hr>
+
+<form th:action="@{/user/confirmRegistration}" method="post">
+
+  <input type="hidden" name="eventId" th:value="${eventId}">
+
+  <input type="hidden" name="name" th:value="${registration.name}">
+  <input type="hidden" name="phone" th:value="${registration.phone}">
+  <input type="hidden" name="email" th:value="${registration.email}">
+  <input type="hidden" name="participants" th:value="${registration.participants}">
+  <input type="hidden" name="totalAmount" th:value="${registration.totalAmount}">
+
+  <div>
+    <h3>Select Payment Method</h3>
+
+    <input type="radio"
+           id="upi"
+           name="paymentMethod"
+           value="UPI"
+           required>
+    <label for="upi">UPI</label>
+
+    <br><br>
+
+    <input type="radio"
+           id="cash"
+           name="paymentMethod"
+           value="Cash Counter">
+    <label for="cash">Cash Counter</label>
+  </div>
+
+  <br>
+
+  <button type="submit">Pay Now</button>
+
+</form>
+
+</body>
+</html>

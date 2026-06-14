@@ -56,23 +56,25 @@
 
             </div>
 
-            <div class="action-wrapper">
-                <a th:href="@{/user/BookingForm(price=${ride.r_price})}"
-                   th:styleappend="${ride.is_available == null or !ride.is_available} ? 'pointer-events: none;' : ''"
-                   class="btn-book-now">
-                    <button type="button"
+            <div class="action-wrapper" style="width: 100%;">
+                <form th:action="@{/user/BookingForm}" method="post" style="width: 100%;">
+
+                    <input type="hidden" name="id" th:value="${ride.ride_id}">
+                    <input type="hidden" name="price" th:value="${ride.r_price}">
+
+                    <button type="submit"
                             th:disabled="${ride.is_available == null or !ride.is_available}"
-                            style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; width: 100%;">
+                            class="btn-book-now"
+                            style="width: 100%; display: block; border: none; font-family: 'Poppins', sans-serif;">
                         Confirm & Book Ticket
                     </button>
-                </a>
+                </form>
             </div>
-
         </div>
 
     </div>
 
 </div>
-
+<div th:replace="~{HomeFragments/footer :: site-footer}"></div>
 </body>
 </html>

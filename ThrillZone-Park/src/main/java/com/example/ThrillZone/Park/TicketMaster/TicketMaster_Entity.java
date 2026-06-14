@@ -1,6 +1,6 @@
 package com.example.ThrillZone.Park.TicketMaster;
 
-import com.example.ThrillZone.Park.Booking.Booking_Entity;
+import com.example.ThrillZone.Park.Rides.Booking_Entity;
 import com.example.ThrillZone.Park.Events.Event_Entity;
 import com.example.ThrillZone.Park.FoodCourt.FoodCourt_Entity;
 import com.example.ThrillZone.Park.Rides.Ride_Entity;

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Ride</title>
+  <link rel="stylesheet" th:href="@{/admincss/editRides.css}">
+
+</head>
+
+<body>
+
+<form th:action="@{/admin/updateRide}"
+      method="post"
+      enctype="multipart/form-data">
+  <h1>Edit Ride</h1>
+
+
+  <input type="hidden"
+         name="ride_id"
+         th:value="${ride.ride_id}">
+
+  <input type="hidden"
+         name="r_image"
+         th:value="${ride.r_image}">
+
+  <input type="text"
+         name="name"
+         placeholder="Ride Name"
+         th:value="${ride.name}"
+         required>
+
+
+  <input type="text"
+         name="description"
+         placeholder="Description"
+         th:value="${ride.description}"
+         required>
+
+
+  <input type="number"
+         name="capacity"
+         placeholder="Capacity"
+         th:value="${ride.capacity}">
+
+
+  <input type="number"
+         name="min_age"
+         placeholder="Minimum Age"
+         th:value="${ride.min_age}">
+
+
+  <input type="number"
+         name="r_price"
+         placeholder="Price"
+         th:value="${ride.r_price}">
+
+
+  <div class="image-preview">
+
+    <h4>Current Image</h4>
+
+    <img th:src="@{${ride.r_image}}">
+    <input type="hidden"
+           name="oldImage"
+           th:value="${ride.r_image}">
+
+    <input type="file"
+           name="newImage">
+  </div>
+
+
+  <div class="checkbox">
+
+    <label>
+
+      <input type="checkbox"
+             name="is_available"
+             th:checked="${ride.is_available}">
+
+      Available
+
+    </label>
+
+  </div>
+
+
+  <button type="submit">
+    Update Ride
+  </button>
+
+</form>
+
+</body>
+</html>

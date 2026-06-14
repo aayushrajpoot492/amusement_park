@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Form</title>
+    <link rel="stylesheet" th:href="@{/css/rideBookingForm.css}">
+</head>
+
+<body>
+
+<div class="booking-container">
+
+    <h2>Book Your Ride</h2>
+
+    <form th:action="@{/user/bookRide}" method="post">
+
+        <input type="hidden" name="rideId" th:value="${rideId}">
+
+        <label>Selected Ride</label>
+        <input type="text"
+               th:value="${booking.ride != null ? booking.ride.name : ride.name}"
+               disabled
+               style="background-color: #f1f2f6; font-weight: bold; color: #2c3e50;">
+
+        <input type="text"
+               name="customer_name"
+               placeholder="Enter Customer Name"
+               th:value="${booking != null ? booking.customer_name : ''}"
+               required>
+
+        <input type="text"
+               name="customer_phone"
+               placeholder="Phone Number"
+               th:value="${booking != null ? booking.customer_phone : ''}"
+               required>
+
+        <label>Select Date</label>
+        <input type="date"
+               name="booking_date"
+               th:value="${booking != null ? booking.booking_date : ''}"
+               required>
+
+        <label>Select Time Slot</label>
+        <select name="booking_time" required>
+            <option value="">-- Choose Time Slot --</option>
+            <option value="10:00"
+                    th:selected="${booking != null && booking.booking_time != null && booking.booking_time.toString() == '10:00'}">
+                10:00 AM
+            </option>
+            <option value="12:00"
+                    th:selected="${booking != null && booking.booking_time != null && booking.booking_time.toString() == '12:00'}">
+                12:00 PM
+            </option>
+            <option value="14:00"
+                    th:selected="${booking != null && booking.booking_time != null && booking.booking_time.toString() == '14:00'}">
+                02:00 PM
+            </option>
+            <option value="16:00"
+                    th:selected="${booking != null && booking.booking_time != null && booking.booking_time.toString() == '16:00'}">
+                04:00 PM
+            </option>
+            <option value="18:00"
+                    th:selected="${booking != null && booking.booking_time != null && booking.booking_time.toString() == '18:00'}">
+                06:00 PM
+            </option>
+        </select>
+
+        <input type="hidden"
+               id="price"
+               name="total_amount"
+               th:value="${booking.total_amount}">
+
+        <input type="number"
+               id="tickets"
+               name="total_tickets"
+               placeholder="No. of Tickets"
+               min="1"
+               th:value="${booking != null ? booking.total_tickets : ''}"
+               required>
+
+        <p>
+            Total Amount:
+            ₹ <span id="total">0</span>
+        </p>
+
+        <button type="submit">
+            Proceed
+        </button>
+
+    </form>
+
+</div>
+
+<script th:src="@{/js/rideBookingForm.js}"></script>
+</body>
+</html>

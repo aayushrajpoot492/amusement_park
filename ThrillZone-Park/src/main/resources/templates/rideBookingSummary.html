@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Summary</title>
+    <link rel="stylesheet" th:href="@{/css/rideBookingSummary.css}">
+
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Booking Summary</h2>
+
+    <p><b>Ride Name:</b>
+        <span th:text="${ride.name}"></span>
+    </p>
+
+    <p><b>Customer Name:</b>
+        <span th:text="${booking.customer_name}"></span>
+    </p>
+
+    <p><b>Date:</b>
+        <span th:text="${booking.booking_date}"></span>
+    </p>
+
+    <p><b>Time Slot:</b>
+        <span th:text="${booking.booking_time}"></span>
+    </p>
+
+    <p><b>Total Tickets:</b>
+        <span th:text="${booking.total_tickets}"></span>
+    </p>
+
+    <p><b>Total Amount:</b>
+        ₹ <span th:text="${finalTotal}"></span>
+    </p>
+
+    <form th:action="@{/user/paymentPage}" method="post">
+
+        <input type="hidden" name="rideId" th:value="${rideId}">
+
+        <input type="hidden"
+               name="customer_name"
+               th:value="${booking.customer_name}">
+
+        <input type="hidden"
+               name="customer_phone"
+               th:value="${booking.customer_phone}">
+
+        <input type="hidden"
+               name="booking_date"
+               th:value="${booking.booking_date}">
+
+        <input type="hidden"
+               name="booking_time"
+               th:value="${booking.booking_time}">
+
+        <input type="hidden"
+               name="total_tickets"
+               th:value="${booking.total_tickets}">
+
+        <input type="hidden"
+               name="total_amount"
+               th:value="${finalTotal}">
+
+        <button type="submit">
+            Proceed To Payment
+        </button>
+
+    </form>
+
+    <form th:action="@{/user/editBooking}" method="post">
+
+        <input type="hidden" name="rideId" th:value="${rideId}">
+
+        <input type="hidden"
+               name="customer_name"
+               th:value="${booking.customer_name}">
+
+        <input type="hidden"
+               name="customer_phone"
+               th:value="${booking.customer_phone}">
+
+        <input type="hidden"
+               name="booking_date"
+               th:value="${booking.booking_date}">
+
+        <input type="hidden"
+               name="booking_time"
+               th:value="${booking.booking_time}">
+
+        <input type="hidden"
+               name="total_tickets"
+               th:value="${booking.total_tickets}">
+
+        <input type="hidden"
+               name="total_amount"
+               th:value="${booking.total_amount}">
+
+        <button type="submit" class="btn edit-btn">
+            Edit Details
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

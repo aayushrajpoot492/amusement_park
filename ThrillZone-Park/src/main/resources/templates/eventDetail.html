@@ -24,8 +24,8 @@
         <div class="detail-img-section">
             <img th:src="${event.e_image}" alt="Event Banner Image" class="detail-large-img">
 
-            <span th:text="${event.is_available} ? 'Available' : 'Sold Out'"
-                  th:class="${event.is_available} ? 'detail-status-badge status-in-stock' : 'detail-status-badge status-out-of-stock'">
+            <span th:text="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)} ? 'Available' : 'Sold Out'"
+                  th:class="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)} ? 'detail-status-badge status-in-stock' : 'detail-status-badge status-out-of-stock'">
             </span>
         </div>
 
@@ -56,10 +56,27 @@
             <div class="detail-desc-block">
                 <h3>About the Event</h3>
                 <p class="detail-desc-text" th:text="${event.e_desc}">
-                    Detailed description of the amusement park event goes here. This section explains the highlights, guidelines, rules and performance elements of the specific show.
+                    Detailed description of the amusement park event goes here.
                 </p>
             </div>
 
+            <div class="detail-seats-wrapper">
+                <div class="detail-seats-title">🎟️ Ticket Availability</div>
+                <div class="detail-seats-grid">
+                    <div class="detail-seats-item">
+                        <span class="seats-item-label">Total Tickets:</span>
+                        <strong class="seats-item-val" th:text="${event.totalSeats}">0</strong>
+                    </div>
+                    <div class="detail-seats-item">
+                        <span class="seats-item-label">Booked Till Now:</span>
+                        <strong class="seats-item-val" th:text="${event.bookedSeats}">0</strong>
+                    </div>
+                    <div class="detail-seats-item">
+                        <span class="seats-item-label">Available Left:</span>
+                        <strong class="seats-item-val seats-left-highlight" th:text="${event.totalSeats - event.bookedSeats}">0</strong>
+                    </div>
+                </div>
+            </div>
             <div class="detail-action-footer">
                 <div class="detail-price-wrapper">
                     <span class="price-label">Ticket Price</span>
@@ -68,13 +85,16 @@
                     </div>
                 </div>
 
-                <a th:href="@{/user/bookEvent(id=${event.e_id}, price=${event.e_price})}" th:if="${event.is_available}">
+                <a th:href="@{/user/bookEvent(id=${event.e_id}, price=${event.e_price})}"
+                   th:if="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)}">
                     <button type="button" class="detail-action-btn">
-                        Confirm & Book Tickets
+                        Confirm & Register Now
                     </button>
                 </a>
 
-                <button type="button" class="detail-action-btn" th:if="${!event.is_available}" disabled>
+                <button type="button" class="detail-action-btn"
+                        th:if="${event.is_available == null or !event.is_available or (event.bookedSeats >= event.totalSeats)}"
+                        disabled>
                     Sold Out
                 </button>
             </div>
@@ -90,6 +110,6 @@
     </div>
 
 </div>
-
+<div th:replace="~{HomeFragments/footer :: site-footer}"></div>
 </body>
 </html>

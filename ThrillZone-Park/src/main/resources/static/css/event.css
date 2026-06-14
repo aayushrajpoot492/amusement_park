@@ -1,8 +1,10 @@
+
 .events-section-title {
     text-align: center;
     font-size: 2.5rem;
     color: #2c3e50;
-    padding-top: 85px;
+    padding-top: 40px;
+    margin-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -11,8 +13,14 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 15px auto 10px auto;
     padding: 0 20px;
+}
+.see-more-box .events-section-title {
+    padding-top: 0;
+    margin: 0;
+    font-size: 2.2rem;
+    text-align: left;
 }
 
 .see-more-text {
@@ -23,6 +31,7 @@
     text-decoration: none;
     font-weight: bold;
     transition: background 0.3s ease;
+    white-space: nowrap;
 }
 
 .events-container {
@@ -31,7 +40,7 @@
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 .event-card {
@@ -124,7 +133,7 @@
     color: #57606f;
     line-height: 1.5;
     margin-bottom: 15px;
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 .see-detail-link {
@@ -135,6 +144,47 @@
 
 .see-detail-link:hover {
     text-decoration: underline;
+}
+
+.seats-info-wrapper {
+    margin: 12px 0;
+    font-size: 0.9rem;
+    color: #57606f;
+    border-top: 1px dashed #ced6e0;
+    padding-top: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.seats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.seats-label {
+    font-weight: 500;
+    color: #747d8c;
+}
+
+.seats-count {
+    font-weight: 700;
+    color: #2f3542;
+}
+
+.seats-available-highlight {
+    color: #2ed573;
+    font-weight: 700;
+}
+
+.event-full-badge {
+    color: #ff4757;
+    font-weight: bold;
+    font-size: 0.8rem;
+    background: #ffeaa7;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .event-footer {
@@ -174,15 +224,28 @@
 
 @media (max-width: 768px) {
     .events-section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        padding-top: 20px;
     }
+
     .see-more-box {
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
         gap: 10px;
-        text-align: center;
+        padding: 0 15px;
     }
+
+    .see-more-box .events-section-title {
+        font-size: 1.5rem;
+    }
+
+    .see-more-text {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
     .events-container {
-        padding: 15px;
+        padding: 10px 15px;
         gap: 20px;
     }
 }

@@ -1,35 +1,31 @@
-/* --- COMPACT CHANGES START HERE --- */
-
 .event-detail-box {
     display: flex;
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    /* Pehle 500px thi, ise 400px kar diya taaki box compact ho jaye */
     min-height: 400px;
-    max-width: 950px; /* Box ki total width bhi thodi kam kar di premium look ke liye */
+    max-width: 950px;
     margin: 0 auto;
 }
 
 .detail-img-section {
-    flex: 1; /* Pehle 1.2 tha, ab 1:1 ratio kar diya taaki image square-ish aur chhoti dikhe */
+    flex: 1;
     position: relative;
     background-color: #f1f2f6;
 }
 
 .detail-info-section {
     flex: 1;
-    padding: 30px; /* Pehle 400px pe 40px padding thi, ab 30px kar di taaki tight aur clean dikhe */
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: #ffffff;
 }
 
-/* Baki Details ki Spacing thodi kam kar di */
 .info-header .event-main-title {
-    font-size: 1.8rem; /* Font thoda chhota kiya 2.2rem se */
+    font-size: 1.8rem;
     color: #2f3542;
     margin: 0 0 12px 0;
     font-weight: 800;
@@ -55,7 +51,7 @@
 }
 
 .detail-desc-block {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .detail-desc-block h3 {
@@ -67,27 +63,60 @@
 }
 
 .detail-desc-text {
-    font-size: 0.95rem; /* Text size chhota kiya flat visual scale ke liye */
+    font-size: 0.95rem;
     color: #57606f;
     line-height: 1.5;
     margin: 0;
 }
+.detail-seats-wrapper {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e4e7eb;
+}
 
+.detail-seats-title {
+    font-size: 0.85rem;
+    color: #747d8c;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.detail-seats-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.detail-seats-item {
+    font-size: 0.9rem;
+    color: #2f3542;
+}
+
+.seats-item-label {
+    color: #57606f;
+    margin-right: 4px;
+}
+
+.seats-item-val {
+    font-weight: 700;
+}
+
+.seats-left-highlight {
+    color: #2ed573;
+}
 .detail-action-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #f1f2f6;
-    padding: 15px 25px; /* Padding kam ki */
+    padding: 15px 25px;
     border-radius: 12px;
     margin-top: auto;
 }
-
-/* --- COMPACT CHANGES END HERE --- */
-
-
-/* --- BAWARCHEE CODE (Baki sab same h tumhari CSS jaisa) --- */
-
 .detail-page-container {
     max-width: 1100px;
     margin: 40px auto;
@@ -176,6 +205,7 @@
 
 @media (max-width: 480px) {
     .event-meta-grid { grid-template-columns: 1fr; }
+    .detail-seats-grid { flex-direction: column; gap: 6px; } /* Mobile par seats vertically set ho jayengi */
     .detail-action-footer { flex-direction: column; gap: 12px; text-align: center; }
     .detail-action-btn { width: 100%; }
 }

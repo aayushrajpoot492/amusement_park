@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,8 +8,11 @@
 <body>
 <header class="header" th:fragment="Header(isLoggedIn)">
     <link rel="stylesheet" th:href="@{/css/header.css}">
+
     <div class="logo-container">
-        <a href="/user/home"><img class="logoimg" src="/images/Logo/logo.png"></a>
+        <a href="/user/home">
+            <img class="logoimg" src="/images/Logo/logo.png">
+        </a>
     </div>
 
     <nav class="nav" th:if="${isLoggedIn}">
@@ -34,15 +37,20 @@
             Park Profile
         </a>
 
+        <a sec:authorize="hasRole('ADMIN')" href="/admin/dashboard" class="admin-panel-link">
+            ⚙️ Admin Panel
+        </a>
+
     </nav>
+
     <div class="right-section">
 
-        <button class="logout" th:if="${isLoggedIn}" onclick="window.location.href='/'">
+        <button class="logout" th:if="${isLoggedIn}" onclick="window.location.href='/logout'">
             Logout
         </button>
 
         <div th:if="${!isLoggedIn}" class="notlogin">
-            <button class="login" onclick="window.location.href='/login-form' ">Login</button>
+            <button class="login" onclick="window.location.href='/login-form'">Login</button>
             <button class="signup" onclick="window.location.href='/signup-form'">Signup</button>
         </div>
 

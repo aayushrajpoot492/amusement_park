@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.vom">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/admincss/ride.css}">
+
+</head>
+<body>
+
+
+<div class="main-content">
+
+
+  <div class="page-header">
+
+    <h1>Ride Management</h1>
+
+    <a href="/admin/addRide" class="add-btn">
+      + Add Ride
+    </a>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="card">
+      <h3>Total Rides</h3>
+      <h2 th:text="${totalRides}">0</h2>
+    </div>
+
+    <div class="card">
+      <h3>Available Rides</h3>
+      <h2 th:text="${availableRides}">0</h2>
+    </div>
+
+    <div class="card">
+      <h3>Unavailable Rides</h3>
+      <h2 th:text="${unavailableRides}">0</h2>
+    </div>
+
+  </div>
+
+
+  <div class="search-box">
+
+    <input type="text"
+           placeholder="Search Ride...">
+
+  </div>
+
+
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+
+      <tr>
+
+        <th>Image</th>
+        <th>Ride Name</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Actions</th>
+
+      </tr>
+
+      </thead>
+
+      <tbody>
+
+      <tr th:each="ride : ${rides}">
+
+        <td>
+
+          <img th:src="@{${ride.r_image}}"
+               class="ride-img">
+
+        </td>
+
+        <td th:text="${ride.name}"></td>
+
+        <td>
+          ₹<span th:text="${ride.r_price}"></span>
+        </td>
+
+        <td>
+
+                    <span th:if="${ride.is_available}"
+                          class="status-active">
+                        Available
+                    </span>
+
+          <span th:unless="${ride.is_available}"
+                class="status-inactive">
+                        Unavailable
+                    </span>
+
+        </td>
+
+        <td>
+
+          <a th:href="@{/admin/editRide/{id}(id=${ride.ride_id})}"
+             class="edit-btn">
+            Edit
+          </a>
+
+          <a th:href="@{/admin/deleteRide/{id}(id=${ride.ride_id})}"
+             class="delete-btn">
+            Delete
+          </a>
+
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+
+</body>
+</html>

@@ -29,13 +29,25 @@
                 <p class="price">₹ <span th:text="${ride.r_price}"></span></p>
 
                 <div class="ride-footer">
-                    <a th:href="@{/user/BookingForm(price=${ride.r_price})}">
-                        <button type="button"
+                    <form th:action="@{/user/BookingForm}" method="post">
+
+                        <input type="hidden"
+                               name="ride_name"
+                               th:value="${ride.name}">
+
+                        <input type="hidden"
+                               name="price"
+                               th:value="${ride.r_price}">
+
+                        <button type="submit"
                                 th:disabled="${ride.is_available == null or !ride.is_available}"
                                 class="ticket-btn">
+
                             Book Ticket
+
                         </button>
-                    </a>
+
+                    </form>
                     <span th:text="${ride.is_available != null and ride.is_available} ? 'Available' : 'Unavailable'"
                           th:classappend="${ride.is_available != null and ride.is_available} ? 'status available' : 'status unavailable'">
                     </span>

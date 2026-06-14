@@ -7,9 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.Collection;
 
 @Configuration
 public class SecurityConfig {
@@ -22,23 +25,20 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**","/uploads/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/uploads/**").permitAll()
 
-                        .requestMatchers("/","/login-form", "/signup-form").permitAll()
-
-
-                        .requestMatchers("/user/ParkProfile","/user/addRideForm","/user/addRide","/user/rides","/user/BookingForm","/user/foodCourtForm","/user/addFood","/user/foods","/verify-otp-model", "/forgot-pass-form", "/reset-password","/user-details", "/save-user-details").permitAll()
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/", "/login-form", "/signup-form", "/api/auth/**").permitAll()
+                        .requestMatchers("/verify-otp-model", "/forgot-pass-form", "/reset-password", "/user-details", "/save-user-details").permitAll()
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                      .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
+
+                        .requestMatchers("/user/**").hasAnyRole("CUSTOMER", "ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -47,6 +47,18 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .successHandler((request, response, authentication) -> {
                             response.setStatus(HttpServletResponse.SC_OK);
+                            response.setContentType("application/json");
+
+                            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+                            String redirectUrl = "/user/home";
+
+                            for (GrantedAuthority authority : authorities) {
+                                if (authority.getAuthority().equals("ROLE_ADMIN")) {
+                                    redirectUrl = "/admin/dashboard";
+                                    break;
+                                }
+                            }
+                            response.getWriter().write("{\"redirectUrl\": \"" + redirectUrl + "\"}");
                         })
                         .failureHandler((request, response, exception) -> {
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

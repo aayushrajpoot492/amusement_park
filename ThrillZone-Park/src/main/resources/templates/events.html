@@ -17,9 +17,9 @@
 
     <div class="event-img-container">
       <img th:src="${event.e_image}" alt="Event Image" class="event-img">
-      <span th:text="${event.is_available != null and event.is_available} ? 'Available' : 'Sold Out'"
-            th:class="${event.is_available != null and event.is_available} ? 'status-badge status-available' : 'status-badge status-unavailable'">
-            </span>
+      <span th:text="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)} ? 'Available' : 'Sold Out'"
+            th:class="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)} ? 'status-badge status-available' : 'status-badge status-unavailable'">
+      </span>
     </div>
 
     <div class="event-content">
@@ -39,17 +39,35 @@
         <a th:href="@{/user/eventDetails(id=${event.e_id})}" class="see-detail-link">Read More</a>
       </p>
 
+      <div class="seats-info-wrapper">
+        <div class="seats-row">
+          <span>Total Seats: <strong class="seats-count" th:text="${event.totalSeats}">0</strong></span>
+          <span>Booked Seats: <strong class="seats-count" th:text="${event.bookedSeats}">0</strong></span>
+        </div>
+        <div class="seats-row" style="align-items: center;">
+          <span>Available Seats: <strong class="seats-available-highlight" th:text="${event.totalSeats - event.bookedSeats}">0</strong></span>
+
+          <span th:if="${event.totalSeats <= event.bookedSeats}" class="event-full-badge">
+                Event Full
+          </span>
+        </div>
+      </div>
       <div class="event-footer">
         <div class="event-price">
           ₹<span th:text="${#numbers.formatDecimal(event.e_price, 1, 0)}">0</span>
         </div>
-        <a th:href="@{/user/bookEvent(id=${event.e_id}, price=${event.e_price})}">
-          <button type="button"
-                  th:disabled="${event.is_available == null or !event.is_available}"
-                  class="book-btn">
-            Book Tickets
+
+        <a th:href="@{/user/bookEvent(id=${event.e_id}, price=${event.e_price})}"
+           th:if="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)}"
+           class="book-btn-link">
+          <button type="button" class="book-btn">
+            Register Now
           </button>
         </a>
+
+        <button type="button" th:if="${event.is_available == null or !event.is_available or (event.bookedSeats >= event.totalSeats)}" class="book-btn" disabled style="background: #cbd5e1; cursor: not-allowed;">
+          Sold Out
+        </button>
       </div>
     </div>
 
