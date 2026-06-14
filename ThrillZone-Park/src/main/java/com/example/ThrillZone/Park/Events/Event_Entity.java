@@ -13,14 +13,15 @@ public class Event_Entity {
     Long e_id;
 
     String e_name,e_desc;
-
+    int totalSeats;
+    int bookedSeats;
     double e_price;
     boolean is_available;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate e_date;
     @DateTimeFormat(pattern = "HH:mm")
     LocalTime e_time;
-    @Lob
+
     @Column(name = "e_image")
     private String e_image;
 
@@ -28,10 +29,12 @@ public class Event_Entity {
     public Event_Entity() {
     }
 
-    public Event_Entity(Long e_id, String e_name, String e_desc,  double e_price, boolean is_available, LocalDate e_date, LocalTime e_time, String e_image) {
+    public Event_Entity(Long e_id, String e_name, String e_desc, int totalSeats,int bookedSeats, double e_price, boolean is_available, LocalDate e_date, LocalTime e_time, String e_image) {
         this.e_id = e_id;
         this.e_name = e_name;
         this.e_desc = e_desc;
+        this.totalSeats=totalSeats;
+        this.bookedSeats=bookedSeats;
         this.e_price = e_price;
         this.is_available = is_available;
         this.e_date = e_date;
@@ -62,6 +65,22 @@ public class Event_Entity {
 
     public void setE_desc(String e_desc) {
         this.e_desc = e_desc;
+    }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+
+    public int getBookedSeats() {
+        return bookedSeats;
+    }
+
+    public void setBookedSeats(int bookedSeats) {
+        this.bookedSeats = bookedSeats;
     }
 
     public double getE_price() {
@@ -104,4 +123,3 @@ public class Event_Entity {
         this.e_image = e_image;
     }
 }
-

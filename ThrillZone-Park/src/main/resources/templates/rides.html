@@ -1,167 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/rides.css}">
+
 </head>
-<body>
-<div>
-    <!DOCTYPE html>
-    <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>All Rides</title>
+ <body>
+ <div th:replace="~{HomeFragments/header :: Header(true)}"></div>
 
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background: #f4f6f8;
-                margin: 0;
-                padding: 20px;
-                padding-top:0px;
-            }
-
-            h1 {
-                font-size:48px;
-                text-align: center;
-                color: #333;
-                margin-bottom: 30px;
-            }
-
-           .rides-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 35px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.ride-card {
-    width: 100%;
-
-                background: white;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-                transition: 0.3s;
-}
-
-            .ride-card:hover {
-                transform: translateY(-5px);
-            }
-
-            .ride-card img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-            }
-
-            .ride-content {
-                padding: 15px;
-            }
-
-            .ride-content h2 {
-                margin: 0;
-                color: #222;
-            }
-
-            .ride-content p {
-                color: #666;
-                margin: 8px 0;
-            }
-
-            .price {
-                color: black;
-                font-weight: bold;
-                font-size: 18px;
-            }
-
-.ride-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.ticket-btn {
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    background: #ff5722;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration:none;
-}
-
-.ticket-btn:hover {
-    background: #e64a19;
-}
-
-.ticket-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-.status {
-    font-weight: bold;
-}
-
-.available {
-    color: green;
-}
-
-.unavailable {
-    color: red;
-}
-
-
-@media (max-width: 1024px) {
-    .rides-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    .rides-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    body {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    .ride-card img {
-        height: 180px;
-    }
-
-    .ride-content {
-        padding: 12px;
-    }
-
-    .ticket-btn {
-        padding: 6px 10px;
-        font-size: 14px;
-    }
-}
-
-        </style>
-    </head>
-    <body>
-    <div th:replace="~{HomeFragments/header :: Header(true)}"></div>
-    <h1>Explore all Rides !!</h1>
+ <h1 class="rides-title">Explore all Rides !!</h1>
 
     <div class="rides-container">
 
@@ -170,7 +19,10 @@
 
             <div class="ride-content">
                 <h2 th:text="${ride.name}"></h2>
-                <p th:text="${ride.description}"></p>
+                <div class="description-container">
+                    <span class="truncated-text" th:text="${#strings.abbreviate(ride.description, 55)}"></span>
+                    <a th:href="@{/user/rideDetails(id=${ride.ride_id})}" class="see-detail-link">See Detail</a>
+                </div>
 
                 <p class="price">₹ <span th:text="${ride.r_price}"></span></p>
 
@@ -179,8 +31,8 @@
                     <form th:action="@{/user/BookingForm}" method="post">
 
                         <input type="hidden"
-                               name="ride_name"
-                               th:value="${ride.name}">
+                               name="id"
+                               th:value="${ride.ride_id}">
 
                         <input type="hidden"
                                name="price"
@@ -189,24 +41,22 @@
                         <button type="submit"
                                 th:disabled="${ride.is_available == null or !ride.is_available}"
                                 class="ticket-btn">
-
                             Book Ticket
-
                         </button>
 
                     </form>
                     <span
                             th:text="${ride.is_available != null and ride.is_available} ? 'Available' : 'Unavailable'"
-                            th:classappend="${ride.is_available != null and ride.is_available} ? 'status available' : 'status unavailable'"                </span>
+                            th:classappend="${ride.is_available != null and ride.is_available} ? 'status available' : 'status unavailable'">
+                    </span>
 
                 </div>
             </div>
         </div>
 
     </div>
+    <div th:replace="~{HomeFragments/footer :: site-footer}"></div>
 
-    </body>
-    </html>
-</div>
-</body>
+
+ </body>
 </html>

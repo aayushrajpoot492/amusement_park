@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Court Item Details</title>
+  <link rel="stylesheet" href="/css/foodDetail.css">
+</head>
+<body>
+
+<div th:replace="~{HomeFragments/header :: Header(true)}"></div>
+
+<div class="card-screen-container">
+
+  <div class="food-detail-card-large">
+
+    <div class="card-image-left">
+      <img th:src="${food.f_image}" alt="Food Image" class="card-img">
+    </div>
+
+    <div class="card-content-right">
+
+      <div class="meta-top-row">
+        <span class="food-category" th:text="${#strings.toUpperCase(food.category)}">FASTFOOD</span>
+      </div>
+
+      <h1 class="food-title-large" th:text="${food.f_name}">Loaded Nachos</h1>
+
+      <div class="price-status-container">
+        <span class="food-price-large">₹ <span th:text="${food.f_price}">210.0</span></span>
+
+        <span th:class="${food.is_available == true} ? 'status-badge-large available' : 'status-badge-large unavailable'"
+              th:text="${food.is_available == true} ? 'Available' : 'Unavailable'">
+            Unavailable
+        </span>
+      </div>
+
+      <p class="food-description-large" th:text="${food.desc}">
+        Crispy golden corn tortilla chips layered heavily with hot melted cheese sauce, tangy salsa, diced jalapenos, sour cream, and sweet corn. Perfect sharing snack for full park energy!
+      </p>
+
+      <div class="action-wrapper">
+        <button class="order-btn-large" th:disabled="${food.is_available == false}">
+          Order now
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

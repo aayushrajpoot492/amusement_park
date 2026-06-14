@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Page</title>
+    <link rel="stylesheet" th:href="@{/css/ridePayment.css}">
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <h2>Payment Page 💳</h2>
+
+    <p>
+        <b> Ride Name:</b>
+        <span th:text="${ride.name}"></span>
+    </p>
+    <p>
+        <b> Customer Name:</b>
+        <span th:text="${booking.customer_name}"></span>
+    </p>
+    <p>
+        <b> Customer Phone:</b>
+        <span th:text="${booking.customer_phone}"></span>
+    </p>
+
+    <p>
+        <b>Booking Date:</b>
+        <span th:text="${booking.booking_date}"></span>
+    </p>
+
+    <p>
+        <b>Time Slot:</b>
+        <span th:text="${booking.booking_time}"></span>
+    </p>
+
+    <p>
+        <b>Total Tickets:</b>
+        <span th:text="${booking.total_tickets}"></span>
+    </p>
+
+    <p>
+        <b>Total Amount:</b>
+        ₹ <span th:text="${booking.total_amount}"></span>
+    </p>
+
+    <form th:action="@{/user/confirmBooking}" method="post">
+
+        <input type="hidden" name="rideId" th:value="${rideId}">
+
+        <input type="hidden"
+               name="customer_name"
+               th:value="${booking.customer_name}">
+
+        <input type="hidden"
+               name="customer_phone"
+               th:value="${booking.customer_phone}">
+
+        <input type="hidden"
+               name="booking_date"
+               th:value="${booking.booking_date}">
+
+        <input type="hidden"
+               name="booking_time"
+               th:value="${booking.booking_time}">
+
+        <input type="hidden"
+               name="total_tickets"
+               th:value="${booking.total_tickets}">
+
+        <input type="hidden"
+               name="total_amount"
+               th:value="${booking.total_amount}">
+
+        <div class="payment-option">
+
+            <h3>Select Payment Method</h3>
+
+            <input type="radio"
+                   id="upi"
+                   name="payment_method"
+                   value="UPI"
+                   required>
+            <label for="upi">UPI</label>
+
+            <br><br>
+
+            <input type="radio"
+                   id="cash"
+                   name="payment_method"
+                   value="Cash Counter">
+            <label for="cash">Cash Counter</label>
+
+        </div>
+
+        <button type="submit">
+            Pay Now
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

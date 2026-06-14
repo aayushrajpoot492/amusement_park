@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${event != null} ? ${event.e_name} + ' - ThrillZone' : 'Event Details'">Event Detail</title>
+
+    <link rel="stylesheet" th:href="@{/css/eventDetail.css}">
+</head>
+<body>
+
+<div th:replace="~{HomeFragments/header :: Header(true)}"></div>
+
+<div class="detail-page-container">
+
+    <div class="back-btn-container">
+        <a th:href="@{/user/events}" class="back-link">
+            <span>⬅</span> Back to All Events
+        </a>
+    </div>
+
+    <div class="event-detail-box" th:if="${event != null}">
+
+        <div class="detail-img-section">
+            <img th:src="${event.e_image}" alt="Event Banner Image" class="detail-large-img">
+
+            <span th:text="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)} ? 'Available' : 'Sold Out'"
+                  th:class="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)} ? 'detail-status-badge status-in-stock' : 'detail-status-badge status-out-of-stock'">
+            </span>
+        </div>
+
+        <div class="detail-info-section">
+
+            <div class="info-header">
+                <h1 class="event-main-title" th:text="${event.e_name}">Event Name Placeholder</h1>
+
+                <div class="event-meta-grid">
+                    <div class="meta-box">
+                        <span class="meta-icon">📅</span>
+                        <div>
+                            <span class="meta-label">Date</span>
+                            <span class="meta-value" th:text="${#temporals.format(event.e_date, 'EEEE, dd MMM yyyy')}">Monday, 01 Jan 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="meta-box">
+                        <span class="meta-icon">🕒</span>
+                        <div>
+                            <span class="meta-label">Timings</span>
+                            <span class="meta-value" th:text="${event.e_time}">12:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-desc-block">
+                <h3>About the Event</h3>
+                <p class="detail-desc-text" th:text="${event.e_desc}">
+                    Detailed description of the amusement park event goes here.
+                </p>
+            </div>
+
+            <div class="detail-seats-wrapper">
+                <div class="detail-seats-title">🎟️ Ticket Availability</div>
+                <div class="detail-seats-grid">
+                    <div class="detail-seats-item">
+                        <span class="seats-item-label">Total Tickets:</span>
+                        <strong class="seats-item-val" th:text="${event.totalSeats}">0</strong>
+                    </div>
+                    <div class="detail-seats-item">
+                        <span class="seats-item-label">Booked Till Now:</span>
+                        <strong class="seats-item-val" th:text="${event.bookedSeats}">0</strong>
+                    </div>
+                    <div class="detail-seats-item">
+                        <span class="seats-item-label">Available Left:</span>
+                        <strong class="seats-item-val seats-left-highlight" th:text="${event.totalSeats - event.bookedSeats}">0</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-action-footer">
+                <div class="detail-price-wrapper">
+                    <span class="price-label">Ticket Price</span>
+                    <div class="detail-price-tag">
+                        ₹<span th:text="${#numbers.formatDecimal(event.e_price, 1, 0)}">0</span>
+                    </div>
+                </div>
+
+                <a th:href="@{/user/bookEvent(id=${event.e_id}, price=${event.e_price})}"
+                   th:if="${event.is_available != null and event.is_available and (event.totalSeats > event.bookedSeats)}">
+                    <button type="button" class="detail-action-btn">
+                        Confirm & Register Now
+                    </button>
+                </a>
+
+                <button type="button" class="detail-action-btn"
+                        th:if="${event.is_available == null or !event.is_available or (event.bookedSeats >= event.totalSeats)}"
+                        disabled>
+                    Sold Out
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="event-detail-box" th:unless="${event != null}" style="align-items: center; justify-content: center; padding: 40px;">
+        <div style="text-align: center; color: #747d8c;">
+            <h2>⚠️ Event Data Not Found!</h2>
+            <p>The event you are searching for does not exist or has been removed.</p>
+        </div>
+    </div>
+
+</div>
+<div th:replace="~{HomeFragments/footer :: site-footer}"></div>
+</body>
+</html>

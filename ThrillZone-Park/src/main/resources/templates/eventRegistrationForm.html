@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Registration Form</title>
+    <link rel="stylesheet" th:href="@{/css/eventRegisForm.css}">
+</head>
+<body>
+
+<h2>Register For Event</h2>
+
+<form th:action="@{/user/registerEventSummary}" th:object="${registration}" method="post">
+
+    <input type="hidden" name="eventId" th:value="${eventId}">
+    <input type="hidden" id="price" name="ticketPrice" th:value="${ticketPrice}">
+
+    <div>
+        <label>Selected Event</label><br>
+        <input type="text"
+               th:value="${event.e_name}"
+               readonly
+               style="background-color: #f1f2f6; font-weight: bold;">
+    </div>
+    <br>
+
+    <div>
+        <input type="text"
+               th:field="*{name}"
+               placeholder="Enter Customer Name"
+               required>
+    </div>
+    <br>
+
+    <div>
+        <input type="text"
+               th:field="*{phone}"
+               placeholder="Phone Number"
+               required>
+    </div>
+    <br>
+
+    <div>
+        <input type="email"
+               th:field="*{email}"
+               placeholder="Enter Email Address"
+               required>
+    </div>
+    <br>
+
+    <div>
+        <label>No. of Participants</label><br>
+        <input type="number"
+               id="participants"
+               th:field="*{participants}"
+               placeholder="No. of Participants"
+               min="1"
+               required>
+    </div>
+    <br>
+
+    <p>
+        Total Amount: ₹ <span id="total">0</span>
+    </p>
+
+    <button type="submit">
+        Proceed
+    </button>
+
+</form>
+
+<script th:src="@{/js/eventRegistrationForm.js}"></script>
+
+</body>
+</html>

@@ -1,7 +1,10 @@
+.content-section-wrapper {
+    padding-top: 85px;
+}
 .rainbow-text {
      margin-top: 40px;
      font-family: 'Arial', sans-serif;
-     margin-bottom: -50px;
+
      text-align: center;
      font-size: 3rem;
      font-weight: 800;

@@ -1,0 +1,251 @@
+
+.events-section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    padding-top: 40px;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.see-more-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 15px auto 10px auto;
+    padding: 0 20px;
+}
+.see-more-box .events-section-title {
+    padding-top: 0;
+    margin: 0;
+    font-size: 2.2rem;
+    text-align: left;
+}
+
+.see-more-text {
+    background-color: #ff4757;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px 20px 20px;
+}
+
+.event-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-img-container {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.event-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-img {
+    transform: scale(1.08);
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.status-available {
+    background-color: #2ed573;
+    color: white;
+}
+
+.status-unavailable {
+    background-color: #ff4757;
+    color: white;
+}
+
+.event-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-title {
+    font-size: 1.4rem;
+    color: #2f3542;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.event-schedule {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #747d8c;
+    margin-bottom: 12px;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.event-desc {
+    font-size: 0.95rem;
+    color: #57606f;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 0;
+}
+
+.see-detail-link {
+    color: #3742fa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.see-detail-link:hover {
+    text-decoration: underline;
+}
+
+.seats-info-wrapper {
+    margin: 12px 0;
+    font-size: 0.9rem;
+    color: #57606f;
+    border-top: 1px dashed #ced6e0;
+    padding-top: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.seats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.seats-label {
+    font-weight: 500;
+    color: #747d8c;
+}
+
+.seats-count {
+    font-weight: 700;
+    color: #2f3542;
+}
+
+.seats-available-highlight {
+    color: #2ed573;
+    font-weight: 700;
+}
+
+.event-full-badge {
+    color: #ff4757;
+    font-weight: bold;
+    font-size: 0.8rem;
+    background: #ffeaa7;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #f1f2f6;
+}
+
+.event-price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #2f3542;
+}
+
+.book-btn {
+    background-color: #3742fa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.book-btn:hover:not(:disabled) {
+    background-color: #5352ed;
+}
+
+.book-btn:disabled {
+    background-color: #ced6e0;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .events-section-title {
+        font-size: 1.8rem;
+        padding-top: 20px;
+    }
+
+    .see-more-box {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 0 15px;
+    }
+
+    .see-more-box .events-section-title {
+        font-size: 1.5rem;
+    }
+
+    .see-more-text {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .events-container {
+        padding: 10px 15px;
+        gap: 20px;
+    }
+}

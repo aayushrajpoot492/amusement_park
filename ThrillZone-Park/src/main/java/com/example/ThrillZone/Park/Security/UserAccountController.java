@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class UserAccountController implements UserDetailsService {
 
@@ -20,11 +19,16 @@ public class UserAccountController implements UserDetailsService {
         User_Master user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
+        String roleStr = "ROLE_CUSTOMER";
+        if (user.getRole() != null) {
+            roleStr = "ROLE_" + user.getRole().getRole_name();
+        }
+
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getEmail())
                 .password(user.getPassword())
                 .disabled(!user.isIs_verified())
-                .authorities("ROLE_" + user.getRole().getRole_name())
+                .authorities(roleStr)
                 .build();
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/admincss/ridesForm.css}">
+</head>
+<body>
+<form th:action="@{/admin/addRide}" method="post" enctype="multipart/form-data">
+
+    <h1>Add Rides</h1>
+
+    <input type="text" name="name" placeholder="Ride Name" required>
+
+    <input type="text" name="description" placeholder="Description" required>
+
+    <input type="number" name="capacity" placeholder="Capacity">
+
+    <input type="number" name="min_age" placeholder="Min Age">
+
+    <input type="number" name="r_price" placeholder="Price">
+
+    <input type="file" name="r_image" required>
+
+    <label>
+    <input type="checkbox" name="is_available" >Available
+    </label>
+    <button type="submit">Add Ride</button>
+
+</form>
+</body>
+</html>

@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+
+<footer th:fragment="site-footer" class="thrillzone-footer">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <div class="footer-container">
+
+        <div class="footer-col brand-col">
+            <h3 class="footer-logo">Thrill<span>Zone</span> Park</h3>
+            <p class="footer-tagline">Experience the ultimate thrill and create unforgettable memories with your loved ones.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col links-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/user/home">Home</a></li>
+                <li><a href="/user/rides">Our Rides</a></li>
+                <li><a href="/user/events">Events</a></li>
+                <li><a href="/user/foods">Food Court</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col contact-col">
+            <h4>Contact & Timings</h4>
+            <p><i class="fas fa-clock"></i> Open Daily: 10:00 AM - 8:00 PM</p>
+            <p><i class="fas fa-map-marker-alt"></i> National Highway, Sagar, MP</p>
+            <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+            <p><i class="fas fa-envelope"></i> support@thrillzonepark.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 ThrillZone Park. All Rights Reserved.</p>
+    </div>
+</footer>
 
 </body>
 </html>

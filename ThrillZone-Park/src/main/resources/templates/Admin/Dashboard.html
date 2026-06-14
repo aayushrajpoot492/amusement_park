@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" th:href="@{/admincss/dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+  <div class="logo">
+    Admin
+  </div>
+
+  <ul>
+    <li><a href="/admin/dashboard">
+      <i class="fa-solid fa-house"></i> Dashboard
+    </a></li>
+
+    <li><a href="/admin/Rides">
+      <i class="fa-solid fa-car"></i> Ride Management
+    </a></li>
+
+    <li><a href="/admin/events">
+      <i class="fa-solid fa-calendar"></i> Event Management
+    </a></li>
+
+    <li><a href="/admin/foods">
+      <i class="fa-solid fa-burger"></i> Food Court
+    </a></li>
+
+    <li><a href="/admin/bookings">
+      <i class="fa-solid fa-ticket"></i> Orders & Bookings
+    </a></li>
+
+    <li><a href="/admin/users">
+      <i class="fa-solid fa-users"></i> Users
+    </a></li>
+
+    <li><a href="/admin/reports">
+      <i class="fa-solid fa-chart-line"></i> Reports
+    </a></li>
+
+    <li><a href="/admin/settings">
+      <i class="fa-solid fa-gear"></i> Settings
+    </a></li>
+
+    <li class="customer-view-link"><a href="/user/home" target="_blank">
+      <i class="fa-solid fa-globe"></i> Customer View
+    </a></li>
+
+    <li><a href="/logout">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </a></li>
+  </ul>
+
+</div>
+
+<div class="main">
+
+  <div class="navbar">
+    <h1>Hello Admin 👋</h1>
+    <input class="search" placeholder="Search">
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="circle">
+        <i class="fa-solid fa-car"></i>
+      </div>
+      <h4>Total Rides</h4>
+      <h2 th:text="${rideCount}">20</h2>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <i class="fa-solid fa-calendar"></i>
+      </div>
+      <h4>Total Events</h4>
+      <h2 th:text="${eventCount}">12</h2>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <i class="fa-solid fa-burger"></i>
+      </div>
+      <h4>Food Items</h4>
+      <h2 th:text="${foodCount}">35</h2>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <i class="fa-solid fa-ticket"></i>
+      </div>
+      <h4>Total Orders</h4>
+      <h2 th:text="${bookingCount}">300</h2>
+    </div>
+
+    <div class="card">
+      <div class="circle">₹</div>
+      <h4>Revenue</h4>
+      <h2 th:text="'₹' + ${revenue}">₹0</h2>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <div class="table-header">
+      <a href="/admin/bookings" class="btn">View All Bookings</a>
+      <input class="search" placeholder="Search">
+    </div>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+      <tr th:each="booking : ${bookings}">
+        <td th:text="${booking.booking_id}"></td>
+        <td th:text="${booking.customer_name}"></td>
+        <td th:text="${booking.total_amount}"></td>
+        <td th:text="${booking.booking_date}"></td>
+        <td th:text="${booking.status}"></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

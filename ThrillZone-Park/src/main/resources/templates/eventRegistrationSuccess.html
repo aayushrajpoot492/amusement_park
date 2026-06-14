@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Successful</title>
+  <link rel="stylesheet" th:href="@{/css/eventRegisSuccess.css}">
+
+</head>
+<body>
+
+<div style="text-align: center; margin-top: 50px;">
+
+  <h1 style="color: green;">Registration Successful 🎉</h1>
+
+  <h2>
+    Registration ID: #<span th:text="${registrationId}"></span>
+  </h2>
+
+  <p>
+    <b>Event Selected:</b>
+    <span th:text="${eventName}"></span>
+  </p>
+
+  <p>
+    <b>Payment Method:</b>
+    <span th:text="${paymentMethod}"></span>
+  </p>
+
+  <p>
+    <b>Payment Status:</b>
+    <span th:text="${paymentStatus}"
+          th:style="${paymentStatus == 'Paid' ? 'color: green; font-weight: bold;' : 'color: orange; font-weight: bold;'}">
+            </span>
+  </p>
+
+  <br><br>
+
+  <div>
+    <a th:href="@{/user/events}">
+      <button type="button">Register Another Event</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/user/home}">
+      <button type="button" style="background-color: lightgreen;">Go To Home</button>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

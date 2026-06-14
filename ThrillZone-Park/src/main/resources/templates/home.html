@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https//wwww.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/css/home.css">
+    <title>ThrillZone - Home</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 <body>
-    <div>
-        <div th:replace="HomeFragments/header :: Header(true)"></div>
-        <h1 class="rainbow-text">Experience the Thrill <br>at Adventure World</h1>
-        <div th:replace="HomeFragments/rides :: Rides"></div>
-    </div>
+
+<div th:replace="~{HomeFragments/header :: Header(true)}"></div>
+
+<div class="content-section-wrapper">
+
+    <h1 class="rainbow-text">Experience the Thrill <br>at Adventure World</h1>
+
+    <div th:replace="~{HomeFragments/rides :: Rides(${@ride_Entity_Repo.findAll()})}"></div>
+    <div th:replace="~{HomeFragments/foods :: Foods(${@foodCourt_Entity_Repo.findAll()})}"></div>
+    <div th:replace="~{HomeFragments/events :: Events(${@event_Entity_Repo.findAll()})}"></div>
+    <div th:replace="~{HomeFragments/footer :: site-footer}"></div>
+
+</div>
+
 </body>
 </html>

@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Food Fragment</title>
 </head>
 <body>
+
+<div th:fragment="Foods(foodsList)">
+    <link rel="stylesheet" th:href="@{/css/food.css}">
+
+    <div class="see-more-box">
+        <h1 class="display">Delicious Food Court</h1>
+        <a th:href="@{/user/foods}" class="see-more-text">See More</a>
+    </div>
+
+    <div class="foods-container">
+        <div class="food-card" th:each="food, iterStat : ${foodsList}" th:if="${iterStat.index < 3}">
+            <img th:src="${food.f_image}" alt="food Image" class="foodimg">
+
+            <div class="food-content">
+                <h2 th:text="${food.f_name}"></h2>
+
+                <div class="description-container">
+                    <span class="truncated-text" th:text="${#strings.abbreviate(food.desc, 55)}"></span>
+
+                    <a th:href="@{/user/foodDetails(id=${food.food_id})}" class="see-detail-link">See Detail</a>
+                </div>
+
+                <p class="price">₹ <span th:text="${#numbers.formatDecimal(food.f_price, 1, 0)}">0</span></p>
+
+                <div class="food-footer">
+                    <a th:href="@{/user/Order(price=${food.f_price})}">
+                        <button type="button"
+                                th:disabled="${food.is_available == null or !food.is_available}"
+                                class="ticket-btn">
+                            Order now
+                        </button>
+                    </a>
+                    <span th:text="${food.is_available != null and food.is_available} ? 'Available' : 'Unavailable'"
+                          th:classappend="${food.is_available != null and food.is_available} ? 'status available' : 'status unavailable'">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

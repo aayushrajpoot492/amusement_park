@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Success</title>
+    <link rel="stylesheet" th:href="@{/css/rideBookingSuccess.css}">
+
+</head>
+<body>
+
+<div class="success-box">
+
+    <h1>Booking Successful 🎉</h1>
+
+    <h2>
+        Booking ID: #<span th:text="${bookingId}"></span>
+    </h2>
+
+    <p>
+        <b>Ride Selected:</b>
+        <span th:text="${name}"></span>
+    </p>
+
+    <p>
+        <b>Payment Method:</b>
+        <span th:text="${paymentMethod}"></span>
+    </p>
+
+    <p>
+        <b>Payment Status:</b>
+        <span th:text="${paymentStatus}"
+              th:style="${paymentStatus == 'Paid' ? 'color: #2ed573; font-weight: bold;' : 'color: #ffa500; font-weight: bold;'}">
+        </span>
+    </p>
+
+    <br>
+
+    <a th:href="@{/user/rides}" class="btn">
+        Book Another Ride
+    </a>
+
+    <a th:href="@{/user/home}" class="btn btn-home">
+        Go To Home
+    </a>
+
+</div>
+
+</body>
+</html>
